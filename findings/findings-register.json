@@ -1,0 +1,970 @@
+{
+  "pinned_commit": "0085a1ff885d6a446369cf73a4430f75af22be55",
+  "pinned_repo": "postfiatorg/postfiatd",
+  "generated_by": "scripts/advisory_check.py (two-pass: OSV version queries via curl + targeted OSV record fetch + curated triage)",
+  "query_date_utc": "2026-11-26",
+  "method_note": "Pass 1 OSV version queries return 0 results for these C/C++ packages because their advisories are recorded as GIT commit ranges with no version/ecosystem data (proven by controls in outputs/osv-controls.json: c-ares 1.26.0 and sqlite 3.48.0 return 0 despite known CVEs). Pass 1 zeros are therefore NOT evidence of cleanliness. Pass 2 is the authoritative triage: curated CVE list with per-CVE fixed versions, applicability reasoning, OSV record fetches in outputs/osv-records/, and CVSS 3.1 scores recomputed from vectors in-script.",
+  "finding_count": 13,
+  "severity_counts": {
+    "Critical": 1,
+    "High": 6,
+    "High-equivalent (no CVSS; support-status finding)": 1,
+    "Medium": 2,
+    "Low": 3
+  },
+  "findings": [
+    {
+      "id": "CVE-2025-0838",
+      "osv_ids": [
+        "CVE-2025-0838"
+      ],
+      "package": "abseil",
+      "pinned_version": "20230802.1",
+      "status": "affected",
+      "title": "Heap buffer overflow in absl hash containers",
+      "cvss31_score": 9.8,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cvss31_severity": "Critical",
+      "cvss40_note": "CNA (Google) CVSS 4.0 score is 5.9 Medium (CVSS:4.0/AV:A/AC:H/AT:P/PR:L/UI:A/...); NVD CVSS 3.1 is 9.8 Critical. This register ranks on NVD CVSS 3.1, as for all other findings.",
+      "fixed_version": "20230802.3 (SUSE-SU-2026:20268-1) / 20250127.0",
+      "fixed_version_source": "SUSE backported fix commit 5a0e2cb5 to the 20230802 line as 20230802.3; upstream fix commit 5a0e2cb5e3958dd90bb8569a2766622cb74d90c1 is in release 20250127.0.",
+      "reachability": "transitive-unverified",
+      "reachability_text": "AFFECTED VERSION. The flaw needs a caller to pass a huge size to the sized constructors / reserve() / rehash() of absl::{flat,node}hash{set,map}. Zero direct uses of absl::flat_hash* in postfiatd src/ and include/ (grep, pinned tree). abseil is used transitively by grpc; no attacker-controlled size argument was identified in grpc's internal use. Network reachability not demonstrated.",
+      "description": "Sized constructors, reserve() and rehash() of absl::{flat,node}hash{set,map} did not impose an upper bound on their size argument; a very large size causes an integer overflow when computing the container backing-store size and a subsequent out-of-bounds memory write.",
+      "evidence": [
+        {
+          "label": "OSV record",
+          "url": "https://osv.dev/vulnerability/CVE-2025-0838"
+        },
+        {
+          "label": "NVD",
+          "url": "https://nvd.nist.gov/vuln/detail/cve-2025-0838"
+        },
+        {
+          "label": "Ubuntu CVE-2025-0838 (fixed 20230802.1-4.2ubuntu0.2)",
+          "url": "https://ubuntu.com/security/CVE-2025-0838"
+        },
+        {
+          "label": "Fix commit 5a0e2cb5",
+          "url": "https://github.com/abseil/abseil-cpp/commit/5a0e2cb5e3958dd90bb8569a2766622cb74d90c1"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://lists.debian.org/debian-lts-announce/2025/04/msg00012.html"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/CVEProject/cvelistV5/tree/main/cves/2025/0xxx/CVE-2025-0838.json"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0838"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/abseil/abseil-cpp"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2025-0838": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2025-0838.json"
+        }
+      },
+      "cvss31_computed": 9.8,
+      "cvss31_computed_severity": "Critical",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2023-44487",
+      "osv_ids": [
+        "CVE-2023-44487"
+      ],
+      "package": "grpc",
+      "pinned_version": "1.50.1",
+      "status": "affected",
+      "title": "HTTP/2 Rapid Reset (CISA KEV, exploited in the wild)",
+      "cvss31_score": 7.5,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "cvss31_severity": "High",
+      "fixed_version": "1.59.2",
+      "fixed_version_source": "SUSE-SU-2024:0573-1: fixed in grpc 1.59.2; OSV GIT range [0, fix commit 06021d91).",
+      "reachability": "network",
+      "reachability_text": "REACHABLE via the gRPC service. postfiatd's gRPC server is an HTTP/2 server (src/xrpld/app/main/GRPCServer.cpp:571-572, InsecureServerCredentials). Shipped configs bind [port_grpc] port 50051 on 127.0.0.1 (cfg/postfiatd-example.cfg:1466-1468); the bind address is operator-configurable, so exposure becomes remote if bound publicly. A remote unauthenticated attacker that can reach the endpoint can exhaust server resources with RST_STREAM floods.",
+      "description": "HTTP/2 Rapid Reset: a peer can send RST_STREAM frames immediately after requests, causing the server to do work that is then cancelled, enabling unauthenticated denial of service. Listed in CISA Known Exploited Vulnerabilities; exploited in the wild Aug-Oct 2023.",
+      "evidence": [
+        {
+          "label": "OSV record",
+          "url": "https://osv.dev/vulnerability/CVE-2023-44487"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "http://www.openwall.com/lists/oss-security/2025/08/13/6"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://access.redhat.com/security/cve/cve-2023-44487"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://arstechnica.com/security/2023/10/how-ddosers-used-the-http-2-protocol-to-deliver-attacks-of-unprecedented-size/"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://aws.amazon.com/security/security-bulletins/AWS-2023-011/"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2023-44487": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2023-44487.json"
+        }
+      },
+      "cvss31_computed": 7.5,
+      "cvss31_computed_severity": "High",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2023-33953",
+      "osv_ids": [
+        "CVE-2023-33953",
+        "GHSA-496j-2rq6-j6cc"
+      ],
+      "package": "grpc",
+      "pinned_version": "1.50.1",
+      "status": "affected",
+      "title": "HPACK table accounting error allows DoS via unwanted disconnects",
+      "cvss31_score": 7.5,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "cvss31_severity": "High",
+      "fixed_version": "1.53.2",
+      "fixed_version_source": "GHSA-496j-2rq6-j6cc ECOSYSTEM range starts at 0, fixed in 1.53.2 (pre-1.53 line).",
+      "reachability": "network",
+      "reachability_text": "REACHABLE via the gRPC service (same endpoint as CVE-2023-44487): errors in HPACK table accounting cause unwanted disconnects between clients and servers; a remote peer can trigger it with crafted HEADERS frames.",
+      "description": "Errors in HPACK table accounting in gRPC C-core can lead to unwanted disconnects between clients and servers (denial of service).",
+      "evidence": [
+        {
+          "label": "OSV record",
+          "url": "https://osv.dev/vulnerability/CVE-2023-33953"
+        },
+        {
+          "label": "OSV GHSA record",
+          "url": "https://osv.dev/vulnerability/GHSA-496j-2rq6-j6cc"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://cloud.google.com/support/bulletins#gcp-2023-022"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/CVEProject/cvelistV5/tree/main/cves/2023/33xxx/CVE-2023-33953.json"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-33953"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/advisories/GHSA-496j-2rq6-j6cc"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/grpc/CVE-2023-33953.yml"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://security.snyk.io/vuln/SNYK-RUBY-GRPC-5834442"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2023-33953": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2023-33953.json"
+        },
+        "GHSA-496j-2rq6-j6cc": {
+          "status": "fetched",
+          "file": "outputs/osv-records/GHSA-496j-2rq6-j6cc.json"
+        }
+      },
+      "cvss31_computed": 7.5,
+      "cvss31_computed_severity": "High",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2026-4111",
+      "osv_ids": [
+        "CVE-2026-4111"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "RAR5 infinite-loop denial of service",
+      "cvss31_score": 7.5,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "cvss31_severity": "High",
+      "cvss31_note": "Vector not present in the fetched OSV record; score 7.5 as published (OpenCVE/NVD).",
+      "fixed_version": "3.8.6",
+      "fixed_version_source": "Debian libarchive (3.8.6-1) changelog: 'Fix CVE-2026-4111'; Yocto: 'fixed since 3.8.6'; SUSE 3.8.6 changelog: 'RAR5 reader: fix infinite loop in rar5 decompression'.",
+      "reachability": "not_reachable",
+      "reachability_text": "NOT REACHABLE via postfiatd's use. The only libarchive consumer in the tree is extractTarLz4 (src/libxrpl/basics/Archive.cpp:36-116), which enables ONLY archive_read_support_format_tar + lz4 filter. The RAR5 reader is never enabled.",
+      "description": "Logical deadlock between the RAR5 filter subsystem and the half-window output limiter leads to an infinite loop (DoS) on a crafted RAR5 archive.",
+      "evidence": [
+        {
+          "label": "OSV record",
+          "url": "https://osv.dev/vulnerability/CVE-2026-4111"
+        },
+        {
+          "label": "Debian libarchive changelog (3.8.6 fixes 4111)",
+          "url": "https://metadata.ftp-master.debian.org/changelogs/main/liba/libarchive/unstable_changelog"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://access.redhat.com/security/cve/CVE-2026-4111"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2446453"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/libarchive/libarchive/pull/2877"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-4111": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-4111.json"
+        }
+      },
+      "cvss31_computed": 7.5,
+      "cvss31_computed_severity": "High",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2026-4424",
+      "osv_ids": [
+        "CVE-2026-4424"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "RAR heap out-of-bounds read (LZSS window)",
+      "cvss31_score": 7.5,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "cvss31_severity": "High",
+      "fixed_version": "3.8.7",
+      "fixed_version_source": "Debian libarchive (3.8.7-1) changelog: 'Fix CVE-2026-4424'; Yocto: 'fixed since 3.8.7'; SUSE 3.8.1 spec applies CVE-2026-4424.patch (3.8.1 affected).",
+      "reachability": "not_reachable",
+      "reachability_text": "NOT REACHABLE via postfiatd's use: RAR reader never enabled (Archive.cpp enables tar only).",
+      "description": "Heap out-of-bounds read in the RAR archive processing logic due to improperly sized LZSS windows (archive_read_support_format_rar.c).",
+      "evidence": [
+        {
+          "label": "NVD CVE-2026-4424 (CVSS 3.1 7.5, vector as recorded)",
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-4424"
+        },
+        {
+          "label": "Debian libarchive changelog (3.8.7 fixes 4424)",
+          "url": "https://metadata.ftp-master.debian.org/changelogs/main/liba/libarchive/unstable_changelog"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-4424": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-4424.json"
+        }
+      },
+      "cvss31_computed": 7.5,
+      "cvss31_computed_severity": "High",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2026-5121",
+      "osv_ids": [
+        "CVE-2026-5121"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "zisofs block-pointer integer overflow (32-bit only)",
+      "cvss31_score": 7.5,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "cvss31_severity": "High",
+      "fixed_version": "3.8.7",
+      "fixed_version_source": "Debian libarchive (3.8.7-1) changelog: 'Fix CVE-2026-5121'; Yocto: 'fixed since 3.8.7'.",
+      "reachability": "not_reachable",
+      "reachability_text": "NOT REACHABLE via postfiatd's use on two counts: the zisofs decompression code lives in the ISO9660 format reader (archive_read_support_format_iso9660.c), which Archive.cpp never enables; and the flaw triggers only on 32-bit systems, while the Dockerfile builds on 64-bit ubuntu:24.04.",
+      "description": "On 32-bit systems, an integer overflow in the zisofs block pointer allocation allows a heap overflow via a crafted ISO image.",
+      "evidence": [
+        {
+          "label": "NVD CVE-2026-5121 (CVSS 3.1 7.5, vector as recorded)",
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-5121"
+        },
+        {
+          "label": "Debian libarchive changelog (3.8.7 fixes 5121)",
+          "url": "https://metadata.ftp-master.debian.org/changelogs/main/liba/libarchive/unstable_changelog"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-5121": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-5121.json"
+        }
+      },
+      "cvss31_computed": 7.5,
+      "cvss31_computed_severity": "High",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2026-14164",
+      "osv_ids": [
+        "CVE-2026-14164"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "RAR5 reader double free",
+      "cvss31_score": 7.5,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "cvss31_severity": "High",
+      "fixed_version": "3.8.8",
+      "fixed_version_source": "Debian libarchive (3.8.8-1) changelog: 'Fix CVE-2026-14164'; Ubuntu 3.8.5-1ubuntu2.2 backports the fix to archive_read_support_format_rar5.c.",
+      "reachability": "not_reachable",
+      "reachability_text": "NOT REACHABLE via postfiatd's use: RAR5 reader never enabled (Archive.cpp enables tar only).",
+      "description": "Double free in libarchive's RAR5 reader during parsing of a specially crafted RAR5 archive (dangling pointers in init_unpack).",
+      "evidence": [
+        {
+          "label": "NVD CVE-2026-14164 (CVSS 3.1 7.5, vector as recorded)",
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-14164"
+        },
+        {
+          "label": "Debian libarchive changelog (3.8.8 fixes 14164)",
+          "url": "https://metadata.ftp-master.debian.org/changelogs/main/liba/libarchive/unstable_changelog"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-14164": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-14164.json"
+        }
+      },
+      "cvss31_computed": 7.5,
+      "cvss31_computed_severity": "High",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "OPENSSL-1.1.1-EOL",
+      "osv_ids": [],
+      "package": "openssl",
+      "pinned_version": "1.1.1w",
+      "status": "support_status",
+      "title": "OpenSSL 1.1.1 end-of-life: no public security fixes since 2023-09-11",
+      "cvss31_score": null,
+      "cvss31_vector": null,
+      "cvss31_severity": "High-equivalent (no CVSS; support-status finding)",
+      "fixed_version": "Migrate to OpenSSL 3.x (3.5 LTS recommended)",
+      "fixed_version_source": "OpenSSL project: 1.1.1 EOL 2023-09-11; 1.1.1w (2023-09-11) was the final 1.1.1 release.",
+      "reachability": "n/a",
+      "reachability_text": "Support-status finding, not a single CVE. 1.1.1w is the final 1.1.1 release; any vulnerability discovered in the 1.1.1 line after 2023-09-11 receives no public fix. The pinned tree also blocks migration: src/libxrpl/crypto/digest.cpp uses RIPEMD160 low-level APIs removed from the OpenSSL 3.x default provider, so an upgrade needs code changes, not just a version bump (see decision memo).",
+      "description": "OpenSSL 1.1.1 reached end of life on 2023-09-11. The pinned version 1.1.1w is the last 1.1.1 release and receives no further public security fixes.",
+      "evidence": [
+        {
+          "label": "OpenSSL 1.1.1 EOL reminder (2023-06-15)",
+          "url": "https://www.openssl.org/blog/blog/2023/06/15/1.1.1-EOL/"
+        }
+      ],
+      "osv_fetch": {},
+      "cvss31_computed": null,
+      "cvss31_recomputed_matches_published": null
+    },
+    {
+      "id": "CVE-2026-4426",
+      "osv_ids": [
+        "CVE-2026-4426"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "zisofs decompression undefined behaviour",
+      "cvss31_score": 6.5,
+      "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "cvss31_severity": "Medium",
+      "fixed_version": "3.8.7",
+      "fixed_version_source": "Debian libarchive (3.8.7-1) changelog: 'Fix CVE-2026-4426'; Yocto: 'fixed since 3.8.7'; SUSE 3.8.1 spec applies CVE-2026-4426.patch.",
+      "reachability": "not_reachable",
+      "reachability_text": "NOT REACHABLE via postfiatd's use: zisofs code lives in the ISO9660 format reader, never enabled by Archive.cpp.",
+      "description": "Undefined behaviour due to an unvalidated operand in a shift expression of the zisofs decompression code.",
+      "evidence": [
+        {
+          "label": "NVD CVE-2026-4426 (CVSS 3.1 6.5, vector as recorded)",
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-4426"
+        },
+        {
+          "label": "Debian libarchive changelog (3.8.7 fixes 4426)",
+          "url": "https://metadata.ftp-master.debian.org/changelogs/main/liba/libarchive/unstable_changelog"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-4426": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-4426.json"
+        }
+      },
+      "cvss31_computed": 6.5,
+      "cvss31_computed_severity": "Medium",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2026-5745",
+      "osv_ids": [
+        "CVE-2026-5745"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "NULL pointer dereference in ACL text parsing",
+      "cvss31_score": 5.5,
+      "cvss31_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+      "cvss31_severity": "Medium",
+      "fixed_version": "3.8.8",
+      "fixed_version_source": "Debian libarchive (3.8.8-1) changelog: 'Fix CVE-2026-5745'; Ubuntu 3.8.5-1ubuntu2.2 backports the fix to archive_acl.c (archive_acl_from_text_nl).",
+      "reachability": "latent",
+      "reachability_text": "LATENT tar-path flaw. The vulnerable function archive_acl_from_text_nl() parses ACL text from tar PAX extended headers, and Archive.cpp enables tar reading with ARCHIVE_EXTRACT_ACL (Archive.cpp:75-77). BUT extractTarLz4 is the only function in Archive.cpp and has NO caller in src/ or include/ in the pinned tree (grep, 2026-11-26), so the code path is present in libxrpl source with no in-tree execution path in xrpld as pinned. Reachable only if the utility is invoked by downstream tooling or future code.",
+      "description": "NULL pointer dereference in the ACL parsing logic (archive_acl_from_text_nl) when processing a malformed ACL string in a tar archive.",
+      "evidence": [
+        {
+          "label": "NVD CVE-2026-5745 (CVSS 3.1 5.5, vector as recorded)",
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-5745"
+        },
+        {
+          "label": "Debian libarchive changelog (3.8.8 fixes 5745)",
+          "url": "https://metadata.ftp-master.debian.org/changelogs/main/liba/libarchive/unstable_changelog"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-5745": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-5745.json"
+        }
+      },
+      "cvss31_computed": 5.5,
+      "cvss31_computed_severity": "Medium",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2026-15028",
+      "osv_ids": [
+        "CVE-2026-15028"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "Heap overflow parsing tar PAX SUN.holesdata sparse attribute",
+      "cvss31_score": 3.9,
+      "cvss31_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:L",
+      "cvss31_severity": "Low",
+      "fixed_version": "3.8.9",
+      "fixed_version_source": "Debian libarchive (3.8.9-1) changelog: 'Fix CVE-2026-15028'; Ubuntu 3.8.5-1ubuntu2.2 backports the fix to archive_read_support_format_tar.c (1-byte OOB read).",
+      "reachability": "latent",
+      "reachability_text": "LATENT tar-path flaw. The vulnerable code is the tar reader's PAX extended-header parsing, which Archive.cpp enables (format tar). BUT extractTarLz4 has NO caller in src/ or include/ in the pinned tree, so the code path is present in libxrpl source with no in-tree execution path in xrpld as pinned. Reachable only if the utility is invoked; the input would then be an operator-supplied local tar file (CVSS AV:L/UI:R matches: local access + user interaction).",
+      "description": "A remote attacker can trigger a heap overflow by providing a specially crafted tar archive; the issue occurs during parsing of a PAX extended header containing a malformed SUN.holesdata sparse-file attribute (CWE-805/CWE-122).",
+      "evidence": [
+        {
+          "label": "NVD CVE-2026-15028 (CVSS 3.1 3.9, vector as recorded)",
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-15028"
+        },
+        {
+          "label": "Debian libarchive changelog (3.8.9 fixes 15028)",
+          "url": "https://metadata.ftp-master.debian.org/changelogs/main/liba/libarchive/unstable_changelog"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-15028": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-15028.json"
+        }
+      },
+      "cvss31_computed": 3.9,
+      "cvss31_computed_severity": "Low",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2026-16517",
+      "osv_ids": [
+        "CVE-2026-16517"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "Signed integer overflow in ZIP writer (encrypted entries)",
+      "cvss31_score": 2.9,
+      "cvss31_vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "cvss31_severity": "Low",
+      "fixed_version": "3.8.9",
+      "fixed_version_source": "Debian libarchive (3.8.9-1) changelog: 'Fix CVE-2026-16517'; Ubuntu 3.8.5-1ubuntu2.3: integer overflow in ZIP writer.",
+      "reachability": "not_reachable",
+      "reachability_text": "NOT REACHABLE via postfiatd's use: the flaw is in the ZIP writer (archive_write_set_format_zip.c) with ZIP encryption enabled. Archive.cpp uses archive_write_disk only; it never writes zip.",
+      "description": "Signed integer overflow in archive_write_zip_header when ZIP encryption is enabled and the entry filename is crafted.",
+      "evidence": [
+        {
+          "label": "NVD CVE-2026-16517 (CVSS 3.1 2.9, vector as recorded)",
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-16517"
+        },
+        {
+          "label": "Ubuntu libarchive changelog (3.8.5-1ubuntu2.3, CVE-2026-16517)",
+          "url": "https://changelogs.ubuntu.com/changelogs/pool/main/liba/libarchive/libarchive_3.8.5-1ubuntu2.3/changelog"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-16517": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-16517.json"
+        }
+      },
+      "cvss31_computed": 2.9,
+      "cvss31_computed_severity": "Low",
+      "cvss31_recomputed_matches_published": true
+    },
+    {
+      "id": "CVE-2025-64031",
+      "osv_ids": [
+        "CVE-2025-64031",
+        "GHSA-92wx-p669-8gr9"
+      ],
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "status": "affected",
+      "title": "strcpy heap overflow in gzip writer",
+      "cvss31_score": 2.5,
+      "cvss31_vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:L",
+      "cvss31_severity": "Low",
+      "cvss31_note": "Vector not present in the fetched OSV record; score 2.5 as published by GHSA-92wx-p669-8gr9.",
+      "fixed_version": "3.8.2",
+      "fixed_version_source": "GHSA-92wx-p669-8gr9: 'libarchive 3.8.x before 3.8.2'; SUSE 3.8.2 changelog lists the gzip-writer fix.",
+      "reachability": "not_reachable",
+      "reachability_text": "NOT REACHABLE via postfiatd's use: the flaw is in the gzip writer. Archive.cpp writes with archive_write_disk only and enables only the lz4 read filter; it never writes gzip.",
+      "description": "strcpy heap overflow in the gzip writer of libarchive 3.8.x.",
+      "evidence": [
+        {
+          "label": "OSV record",
+          "url": "https://osv.dev/vulnerability/CVE-2025-64031"
+        },
+        {
+          "label": "OSV GHSA record",
+          "url": "https://osv.dev/vulnerability/GHSA-92wx-p669-8gr9"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://gist.github.com/ttuurrnn/1365a4a9b1c3d5826a3a9bbe111f26b8"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/libarchive/libarchive/blob/master/libarchive/archive_write_add_filter_gzip.c"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/libarchive/libarchive/pull/2734/commits"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/libarchive/libarchive/pull/2734/files"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2025-64031": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2025-64031.json"
+        },
+        "GHSA-92wx-p669-8gr9": {
+          "status": "fetched",
+          "file": "outputs/osv-records/GHSA-92wx-p669-8gr9.json"
+        }
+      },
+      "cvss31_computed": 2.5,
+      "cvss31_computed_severity": "Low",
+      "cvss31_recomputed_matches_published": true
+    }
+  ],
+  "not_affected": [
+    {
+      "id": "CVE-2023-1428",
+      "package": "grpc",
+      "pinned_version": "1.50.1",
+      "reason": "Introduced in 1.51.0 (hpack table fix), fixed in 1.53.0. 1.50.1 predates the vulnerable code.",
+      "evidence": "GHSA-2c4m-59x9-fr3g ECOSYSTEM range [1.51.0, 1.53.0)."
+    },
+    {
+      "id": "CVE-2023-32731",
+      "package": "grpc",
+      "pinned_version": "1.50.1",
+      "reason": "Introduced BY the CVE-2023-1428 fix commit 358bfb58 (in 1.53.0), fixed in 1.56.0. 1.50.1 predates both.",
+      "evidence": "GHSA-7v5x-rpf4-c6xj."
+    },
+    {
+      "id": "CVE-2023-32732",
+      "package": "grpc",
+      "pinned_version": "1.50.1",
+      "reason": "Same introduction as CVE-2023-32731 (the 1428 fix), fixed in 1.53.1/1.54.2. 1.50.1 predates it.",
+      "evidence": "GHSA-x3r6-5j9r-r2gq."
+    },
+    {
+      "id": "CVE-2023-4785",
+      "package": "grpc",
+      "pinned_version": "1.50.1",
+      "reason": "GHSA-p25m-jpj4-qcrr ECOSYSTEM ranges start at 1.53.0. The NVD text 'starting version 1.23' is an imprecise CPE approximation; the GHSA range is authoritative.",
+      "evidence": "OSV record GHSA-p25m-jpj4-qcrr."
+    },
+    {
+      "id": "CVE-2024-11407",
+      "package": "grpc",
+      "pinned_version": "1.50.1",
+      "reason": "Transmit-zero-copy code introduced in v1.51.0-pre1; 1.50.1 predates it. Fixed in v1.68.0-pre1 (commit e9046b2b). Also requires GRPC_ARG_TCP_TX_ZEROCOPY_ENABLED, which postfiatd does not set.",
+      "evidence": "Wiz CVE-2024-11407 analysis: https://www.wiz.io/vulnerability-database/cve/cve-2024-11407 ; Debian grpc tracker: https://tracker.debian.org/pkg/grpc"
+    },
+    {
+      "id": "CVE-2025-5914",
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "reason": "Introduced in 3.8.0, fixed in 3.8.1. 3.8.1 IS the fix version.",
+      "evidence": "Upstream release notes / GHSA."
+    },
+    {
+      "id": "CVE-2025-5915",
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "reason": "Introduced in 3.8.0, fixed in 3.8.1. 3.8.1 IS the fix version.",
+      "evidence": "Upstream release notes / GHSA."
+    },
+    {
+      "id": "CVE-2025-5916",
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "reason": "Introduced in 3.8.0, fixed in 3.8.1. 3.8.1 IS the fix version.",
+      "evidence": "Upstream release notes / GHSA."
+    },
+    {
+      "id": "CVE-2025-5917",
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "reason": "Introduced in 3.8.0, fixed in 3.8.1. 3.8.1 IS the fix version.",
+      "evidence": "Upstream release notes / GHSA."
+    },
+    {
+      "id": "CVE-2025-5918",
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "reason": "Introduced in 3.8.0, fixed in 3.8.1. 3.8.1 IS the fix version.",
+      "evidence": "Upstream release notes / GHSA."
+    },
+    {
+      "id": "CVE-2025-25724",
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "reason": "NVD CPE range ends at 3.7.7 inclusive ('through 3.7.7'). 3.8.1 is outside the affected range.",
+      "evidence": "NVD API record: cpe libarchive, versionEndIncluding 3.7.7."
+    },
+    {
+      "id": "CVE-2025-60753",
+      "package": "libarchive",
+      "pinned_version": "3.8.1",
+      "reason": "bsdtar-tool-only flaw, fixed in 3.8.1; the bsdtar CLI tool is not linked into postfiatd.",
+      "evidence": "Upstream advisory."
+    },
+    {
+      "id": "CVE-2025-3277",
+      "package": "sqlite3",
+      "pinned_version": "3.49.1",
+      "reason": "Affects versions < 3.49.1; 3.49.1 IS the fix version.",
+      "evidence": "SQLite forum / upstream changelog."
+    },
+    {
+      "id": "CVE-2025-29087",
+      "package": "sqlite3",
+      "pinned_version": "3.49.1",
+      "reason": "Fixed in 3.49.1.",
+      "evidence": "Upstream changelog."
+    },
+    {
+      "id": "CVE-2025-29088",
+      "package": "sqlite3",
+      "pinned_version": "3.49.1",
+      "reason": "Fixed in 3.49.1.",
+      "evidence": "Upstream changelog."
+    },
+    {
+      "id": "CVE-2025-7458",
+      "package": "sqlite3",
+      "pinned_version": "3.49.1",
+      "reason": "Affects 3.39.2-3.41.1 only. 3.49.1 is outside the range.",
+      "evidence": "Upstream advisory."
+    },
+    {
+      "id": "CVE-2024-7254",
+      "package": "protobuf",
+      "pinned_version": "3.21.12",
+      "reason": "Protobuf Java Lite only; the pinned dependency is protobuf-cpp (C++). Not the affected product.",
+      "evidence": "GHSA record (Java Lite)."
+    },
+    {
+      "id": "CVE-2022-1941",
+      "package": "protobuf",
+      "pinned_version": "3.21.12",
+      "reason": "protobuf-cpp affected through 3.21.5; 3.21.12 is newer than the fix.",
+      "evidence": "GHSA record."
+    },
+    {
+      "id": "CVE-2024-25629",
+      "package": "c-ares",
+      "pinned_version": "1.34.9",
+      "reason": "Fixed in 1.27.0; 1.34.9 is newer than the fix.",
+      "evidence": "c-ares security advisory."
+    },
+    {
+      "id": "CVE-2023-31147",
+      "package": "c-ares",
+      "pinned_version": "1.34.9",
+      "reason": "Fixed in 1.19.1; 1.34.9 is newer than the fix.",
+      "evidence": "c-ares security advisory."
+    },
+    {
+      "id": "CVE-2023-31130",
+      "package": "c-ares",
+      "pinned_version": "1.34.9",
+      "reason": "Fixed in 1.19.1; 1.34.9 is newer than the fix.",
+      "evidence": "c-ares security advisory."
+    },
+    {
+      "id": "CVE-2023-32067",
+      "package": "c-ares",
+      "pinned_version": "1.34.9",
+      "reason": "Fixed in 1.19.1; 1.34.9 is newer than the fix.",
+      "evidence": "c-ares security advisory."
+    },
+    {
+      "id": "CVE-2025-31498",
+      "package": "c-ares",
+      "pinned_version": "1.34.9",
+      "reason": "Affects 1.32.3-1.34.4, fixed in 1.34.5; 1.34.9 is newer than the fix.",
+      "evidence": "IBM security bulletin."
+    },
+    {
+      "id": "CVE-2023-6129",
+      "package": "openssl",
+      "pinned_version": "1.1.1w",
+      "reason": "Introduced in OpenSSL 3.2 (PowerPC code). The 1.1.1 line never contained the vulnerable code.",
+      "evidence": "OpenSSL security advisory."
+    },
+    {
+      "id": "CVE-2024-5535",
+      "package": "openssl",
+      "pinned_version": "1.1.1w",
+      "reason": "Affects OpenSSL 3.0-3.3 only. The 1.1.1 line is outside the range.",
+      "evidence": "OpenSSL security advisory."
+    },
+    {
+      "id": "CVE-2023-6992",
+      "package": "zlib",
+      "pinned_version": "1.3.1",
+      "reason": "This CVE is for the Cloudflare zlib fork, not zlib.net. The pinned dependency is zlib.net 1.3.1.",
+      "evidence": "NVD record (Cloudflare zlib product)."
+    },
+    {
+      "id": "CVE-2025-66566",
+      "package": "lz4",
+      "pinned_version": "1.10.0",
+      "reason": "lz4-JAVA (yawkat) only; JNI-based implementations not affected. The pinned dependency is the C library lz4 1.10.0.",
+      "evidence": "Ubuntu CVE-2025-66566: https://ubuntu.com/security/CVE-2025-66566"
+    },
+    {
+      "id": "CVE-2024-36114",
+      "package": "snappy",
+      "pinned_version": "1.2.1",
+      "reason": "aircompressor (Java) only. The pinned dependency is the C++ snappy library 1.2.1.",
+      "evidence": "GHSA record (airlift aircompressor)."
+    },
+    {
+      "id": "CVE-2024-36124",
+      "package": "snappy",
+      "pinned_version": "1.2.1",
+      "reason": "iq80 Snappy (Java) only. The pinned dependency is the C++ snappy library 1.2.1.",
+      "evidence": "GHSA record (iq80 snappy)."
+    },
+    {
+      "id": "CVE-2026-71498",
+      "package": "re2",
+      "pinned_version": "20230301",
+      "reason": "node-re2 (npm wrapper) only; out-of-bounds read with malformed UTF-8 in the Node.js binding. The pinned dependency is the C++ re2 library.",
+      "evidence": "OX Radar re2 (npm) advisory list."
+    },
+    {
+      "id": "CVE-2026-71430",
+      "package": "re2",
+      "pinned_version": "20230301",
+      "reason": "node-re2 (npm wrapper) only. Not the C++ re2 library.",
+      "evidence": "OX Radar re2 (npm) advisory list."
+    },
+    {
+      "id": "CVE-2026-68499",
+      "package": "re2",
+      "pinned_version": "20230301",
+      "reason": "node-re2 (npm wrapper) only. Not the C++ re2 library.",
+      "evidence": "OX Radar re2 (npm) advisory list."
+    },
+    {
+      "id": "CVE-2026-67550",
+      "package": "re2",
+      "pinned_version": "20230301",
+      "reason": "node-re2 (npm wrapper) only. Not the C++ re2 library.",
+      "evidence": "OX Radar re2 (npm) advisory list."
+    },
+    {
+      "id": "CVE-2026-107853",
+      "package": "secp256k1",
+      "pinned_version": "0.6.0",
+      "reason": "tiny-secp256k1 (JavaScript wrapper) only. Not bitcoin-core/secp256k1 (C library).",
+      "evidence": "OSV / GHSA record (npm package)."
+    },
+    {
+      "id": "CVE-2026-63410",
+      "package": "secp256k1",
+      "pinned_version": "0.6.0",
+      "reason": "secp256k1-native (Ruby wrapper) only. Not bitcoin-core/secp256k1 (C library).",
+      "evidence": "OSV / GHSA record (Ruby gem)."
+    }
+  ],
+  "not_applicable": [
+    {
+      "id": "CVE-2026-11460",
+      "osv_ids": [
+        "CVE-2026-11460"
+      ],
+      "package": "boost",
+      "pinned_version": "1.83.0",
+      "status": "not_applicable",
+      "title": "Boost.Serialization type-confusion RCE (component not linked)",
+      "cvss31_score": 7.3,
+      "cvss31_vector": null,
+      "cvss31_severity": "High",
+      "cvss31_note": "Score 7.3 as published; vector not recorded in this triage.",
+      "fixed_version": "None (no patch as of 2026-11-26)",
+      "fixed_version_source": "Published 2026-06-07; PoC public since Oct 2025; affects Boost 1.0-1.91; no patch released.",
+      "reachability": "n/a",
+      "reachability_text": "NOT APPLICABLE. The flaw is in Boost.Serialization. postfiatd links these Boost components (conanfile.py / CMakeLists): chrono, container, coroutine, date_time, filesystem, json, program_options, regex, system, thread. Zero hits for boost::serialization / boost/archive in src/ and include/ (grep, pinned tree). The vulnerable component is not linked.",
+      "description": "Type-confusion remote code execution in Boost.Serialization (deserialisation of untrusted data).",
+      "evidence": [
+        {
+          "label": "OSV record",
+          "url": "https://osv.dev/vulnerability/CVE-2026-11460"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://github.com/CVEProject/cvelistV5/tree/main/cves/2026/11xxx/CVE-2026-11460.json"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11460"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://vuldb.com/cve/CVE-2026-11460"
+        },
+        {
+          "label": "OSV record reference",
+          "url": "https://vuldb.com/submit/814455"
+        }
+      ],
+      "osv_fetch": {
+        "CVE-2026-11460": {
+          "status": "fetched",
+          "file": "outputs/osv-records/CVE-2026-11460.json"
+        }
+      },
+      "cvss31_computed": null,
+      "cvss31_recomputed_matches_published": null
+    }
+  ],
+  "no_advisory_found": [
+    {
+      "package": "soci",
+      "pinned_version": "4.0.3",
+      "note": "No CVE/GHSA surfaced for soci 4.0.3 in OSV Conan query or targeted search."
+    },
+    {
+      "package": "nudb",
+      "pinned_version": "2.0.9",
+      "note": "No CVE/GHSA surfaced for nudb 2.0.9 in OSV Conan query or targeted search."
+    },
+    {
+      "package": "date",
+      "pinned_version": "3.0.4",
+      "note": "No CVE/GHSA surfaced for Howard Hinnant date 3.0.4 in OSV Conan query or targeted search."
+    },
+    {
+      "package": "xxhash",
+      "pinned_version": "0.8.3",
+      "note": "No CVE surfaced for xxHash 0.8.3. Upstream CHANGELOG: 0.8.3 fixes a correctness bug (XXH3_128bits_withSecretandSeed could produce an invalid result, #894) - not a security advisory. Source: https://raw.githubusercontent.com/Cyan4973/xxHash/dev/CHANGELOG"
+    },
+    {
+      "package": "bzip2",
+      "pinned_version": "1.0.8",
+      "note": "No CVE surfaced for bzip2 1.0.8. Note: conanfile.py sets libarchive/*:with_bzip2 False, so bzip2 code is not compiled into the libarchive build (the package remains in the Conan graph)."
+    },
+    {
+      "package": "doctest",
+      "pinned_version": "2.4.11",
+      "note": "Test-only dependency (not linked into xrpld). No CVE surfaced."
+    },
+    {
+      "package": "jemalloc",
+      "pinned_version": "5.3.0",
+      "note": "Optional dependency, default OFF in conanfile.py (not linked by default). No CVE surfaced."
+    },
+    {
+      "package": "rocksdb",
+      "pinned_version": "10.0.1",
+      "note": "No RocksDB-library CVE surfaced in targeted search (results were kernel/Kvrocks noise). FreeBSD ports reports 'none known' for rocksdb."
+    },
+    {
+      "package": "libbacktrace",
+      "pinned_version": "cci.20210118",
+      "note": "Transitive (via grpc). No CVE surfaced."
+    },
+    {
+      "package": "secp256k1",
+      "pinned_version": "0.6.0",
+      "note": "No public advisory found for bitcoin-core/secp256k1 C library 0.6.0 in this triage. Newer upstream releases exist (0.7.0, 0.7.1, 0.8.0 per git ls-remote tags, 2026-11-26); upgrade is available but not security-driven."
+    },
+    {
+      "package": "ed25519-donna",
+      "pinned_version": "unversioned snapshot",
+      "note": "No version to match. Vendored ed25519.c is byte-identical to upstream master HEAD (SHA-256 491efa60...). No advisory check possible by version."
+    },
+    {
+      "package": "antithesis-sdk-cpp",
+      "pinned_version": "0.4.4",
+      "note": "No CVE surfaced for antithesis-sdk-cpp 0.4.4."
+    },
+    {
+      "package": "cmake",
+      "pinned_version": "3.25.1 (Dockerfile tool)",
+      "note": "Build tool, not a linked library. No CVE triaged for the tool version."
+    }
+  ],
+  "not_queryable": [
+    {
+      "package": "ed25519-donna",
+      "reason": "Unversioned vendored snapshot - no version exists to match against advisories. ed25519.c is byte-identical to upstream master HEAD (SHA-256 491efa60...). No version-scoped CVE query is possible; manual review of upstream commits is the only route."
+    },
+    {
+      "package": "ubuntu",
+      "reason": "Base image (ubuntu:24.04) - OS-level patch state is a deployment concern, not a pinned library version; out of scope for this library triage."
+    },
+    {
+      "package": "gcc",
+      "reason": "Toolchain compiler version is a build environment property, not a library with OSV advisories."
+    },
+    {
+      "package": "python",
+      "reason": "Build-script interpreter minimum (3.11); not a linked dependency."
+    }
+  ]
+}

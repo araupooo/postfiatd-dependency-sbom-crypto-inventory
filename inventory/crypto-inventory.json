@@ -1,0 +1,463 @@
+{
+  "pinned_commit": "0085a1ff885d6a446369cf73a4430f75af22be55",
+  "pinned_repo": "postfiatorg/postfiatd",
+  "generated_by": "scripts/crypto_inventory.py (grep over pinned tree; no build)",
+  "entry_count": 14,
+  "entries": [
+    {
+      "id": "CRYPTO-01",
+      "title": "Ed25519 transaction / validator signatures (ed25519-donna)",
+      "primitive": "Ed25519 (EdDSA over Curve25519)",
+      "provides": "ed25519-donna (vendored, unversioned)",
+      "quantum_exposure": "quantum-vulnerable",
+      "verification_status": "measured",
+      "hit_count": 21,
+      "patterns": [
+        {
+          "pattern": "ed25519_sign\\(",
+          "hits": 7
+        },
+        {
+          "pattern": "ed25519_sign_open\\(",
+          "hits": 7
+        },
+        {
+          "pattern": "ed25519_publickey\\(",
+          "hits": 7
+        }
+      ],
+      "evidence": [
+        "external/ed25519-donna/ed25519.h:18: void ed25519_sign(const unsigned char *m, size_t mlen, const ed25519_secret_key sk, const ed25519_public_key pk, ed25519_signature RS);",
+        "external/ed25519-donna/test.c:150: ed25519_sign(message_pointers[i], message_lengths[i], sks[i], pks[i], sigs[i]);",
+        "external/ed25519-donna/test.c:223: ed25519_sign((unsigned char *)dataset[i].m, i, dataset[i].sk, pk, sig);",
+        "external/ed25519-donna/test.c:241: timeit(ed25519_sign((unsigned char *)dataset[0].m, 0, dataset[0].sk, pk, sig), signticks)",
+        "external/ed25519-donna/fuzz/ed25519-donna.h:14: void ed25519_sign(const unsigned char *m, size_t mlen, const ed25519_secret_key sk, const ed25519_public_key pk, ed25519_signature RS);",
+        "external/ed25519-donna/ed25519.h:17: int ed25519_sign_open(const unsigned char *m, size_t mlen, const ed25519_public_key pk, const ed25519_signature RS);",
+        "external/ed25519-donna/test.c:225: edassert(!ed25519_sign_open((unsigned char *)dataset[i].m, i, pk, sig), i, \"failed to open message\");",
+        "external/ed25519-donna/test.c:231: edassert(ed25519_sign_open(forge, (i) ? i : 1, pk, sig), i, \"opened forged message\");"
+      ],
+      "notes": "Signing and verification live in src/libxrpl/protocol/SecretKey.cpp and PublicKey.cpp. Ed25519 verify hashes nothing first (raw message to ed25519_sign_open); secp256k1 verify pre-hashes with SHA-512-Half. Keys are prefixed with a 0xED byte to distinguish them from secp256k1 keys (PublicKey.cpp). No ML-DSA/SLH-DSA alternative exists in the tree."
+    },
+    {
+      "id": "CRYPTO-02",
+      "title": "secp256k1 ECDSA transaction / validator signatures",
+      "primitive": "ECDSA over secp256k1",
+      "provides": "secp256k1 0.6.0 (vendored)",
+      "quantum_exposure": "quantum-vulnerable",
+      "verification_status": "measured",
+      "hit_count": 127,
+      "patterns": [
+        {
+          "pattern": "secp256k1_ecdsa_sign\\(",
+          "hits": 33
+        },
+        {
+          "pattern": "secp256k1_ecdsa_verify\\(",
+          "hits": 38
+        },
+        {
+          "pattern": "secp256k1_ec_pubkey_create\\(",
+          "hits": 46
+        },
+        {
+          "pattern": "secp256k1_ecdsa_signature_normalize\\(",
+          "hits": 10
+        }
+      ],
+      "evidence": [
+        "external/secp256k1/examples/ecdsa.c:81: return_val = secp256k1_ecdsa_sign(ctx, &sig, msg_hash, seckey, NULL, NULL);",
+        "external/secp256k1/include/secp256k1.h:647: SECP256K1_API int secp256k1_ecdsa_sign(",
+        "external/secp256k1/src/bench.c:119: CHECK(secp256k1_ecdsa_sign(data->ctx, &signature, data->msg, data->key, NULL, NULL));",
+        "external/secp256k1/src/bench.c:244: CHECK(secp256k1_ecdsa_sign(data.ctx, &sig, data.msg, data.key, NULL, NULL));",
+        "external/secp256k1/src/ctime_tests.c:111: ret = secp256k1_ecdsa_sign(ctx, &signature, msg, key, NULL, NULL);",
+        "external/secp256k1/examples/ecdsa.c:105: is_signature_valid = secp256k1_ecdsa_verify(ctx, &sig, msg_hash, &pubkey);",
+        "external/secp256k1/examples/ecdsa.c:123: is_signature_valid2 = secp256k1_ecdsa_verify(secp256k1_context_static,",
+        "external/secp256k1/include/secp256k1.h:566: SECP256K1_API SECP256K1_WARN_UNUSED_RESULT int secp256k1_ecdsa_verify("
+      ],
+      "notes": "Context is created once with VERIFY|SIGN flags (include/xrpl/protocol/detail/secp256k1.h:35-36). secp256k1_context_randomize is never called from src/ or include/ (only documented in the vendored header) \u2014 context is not randomized. Signatures are normalized to low-S and required fully canonical on verify (PublicKey.cpp). No ML-DSA/SLH-DSA alternative exists in the tree."
+    },
+    {
+      "id": "CRYPTO-03",
+      "title": "SHA-512 and SHA-512-Half ledger / transaction hashing",
+      "primitive": "SHA-512 (FIPS 180-4), SHA-512-Half = first 256 bits of SHA-512",
+      "provides": "openssl 1.1.1w",
+      "quantum_exposure": "quantum-reduced",
+      "verification_status": "measured",
+      "hit_count": 66,
+      "patterns": [
+        {
+          "pattern": "openssl_sha512_hasher",
+          "hits": 7
+        },
+        {
+          "pattern": "sha512Half",
+          "hits": 56
+        },
+        {
+          "pattern": "SHA512\\(",
+          "hits": 3
+        }
+      ],
+      "evidence": [
+        "include/xrpl/protocol/digest.h:70: struct openssl_sha512_hasher",
+        "include/xrpl/protocol/digest.h:77: openssl_sha512_hasher();",
+        "include/xrpl/protocol/digest.h:116: using sha512_hasher = openssl_sha512_hasher;",
+        "src/libxrpl/protocol/digest.cpp:58: openssl_sha512_hasher::openssl_sha512_hasher()",
+        "src/libxrpl/protocol/digest.cpp:61: sizeof(decltype(openssl_sha512_hasher::ctx_)) == sizeof(SHA512_CTX),",
+        "include/xrpl/protocol/digest.h:224: sha512Half(Args const&... args)",
+        "include/xrpl/protocol/digest.h:240: sha512Half_s(Args const&... args)",
+        "src/libxrpl/ledger/CredentialHelpers.cpp:308: auto [it, ins] = duplicates.insert(sha512Half(issuer, ct));"
+      ],
+      "notes": "SHA-512-Half is the ledger's core hash (digest.h: basic_sha512_half_hasher): transaction signing digests, ledger entry indexes, feature IDs. Implemented via OpenSSL low-level SHA512_Init/Update/Final (digest.cpp:58-78), deprecated in OpenSSL 3.x but present in the pinned OpenSSL 1.1.1w."
+    },
+    {
+      "id": "CRYPTO-04",
+      "title": "SHA-256 hashing",
+      "primitive": "SHA-256 (FIPS 180-4)",
+      "provides": "openssl 1.1.1w",
+      "quantum_exposure": "quantum-reduced",
+      "verification_status": "measured",
+      "hit_count": 21,
+      "patterns": [
+        {
+          "pattern": "openssl_sha256_hasher",
+          "hits": 7
+        },
+        {
+          "pattern": "sha256_hasher",
+          "hits": 14
+        }
+      ],
+      "evidence": [
+        "include/xrpl/protocol/digest.h:93: struct openssl_sha256_hasher",
+        "include/xrpl/protocol/digest.h:100: openssl_sha256_hasher();",
+        "include/xrpl/protocol/digest.h:115: using sha256_hasher = openssl_sha256_hasher;",
+        "src/libxrpl/protocol/digest.cpp:84: openssl_sha256_hasher::openssl_sha256_hasher()",
+        "src/libxrpl/protocol/digest.cpp:87: sizeof(decltype(openssl_sha256_hasher::ctx_)) == sizeof(SHA256_CTX),",
+        "include/xrpl/protocol/digest.h:93: struct openssl_sha256_hasher",
+        "include/xrpl/protocol/digest.h:100: openssl_sha256_hasher();",
+        "include/xrpl/protocol/digest.h:115: using sha256_hasher = openssl_sha256_hasher;"
+      ],
+      "notes": "Used inside hash160 (RIPEMD160(SHA-256)) for account IDs and for the self-signed default TLS certificate (X509_sign with EVP_sha256, make_SSLContext.cpp:233). Implemented via OpenSSL low-level SHA256_* (digest.cpp:84+)."
+    },
+    {
+      "id": "CRYPTO-05",
+      "title": "RIPEMD-160 in account-ID derivation (hash160)",
+      "primitive": "RIPEMD-160",
+      "provides": "openssl 1.1.1w",
+      "quantum_exposure": "quantum-reduced",
+      "verification_status": "measured",
+      "hit_count": 16,
+      "patterns": [
+        {
+          "pattern": "openssl_ripemd160_hasher",
+          "hits": 7
+        },
+        {
+          "pattern": "ripemd160_hasher",
+          "hits": 9
+        }
+      ],
+      "evidence": [
+        "include/xrpl/protocol/digest.h:47: struct openssl_ripemd160_hasher",
+        "include/xrpl/protocol/digest.h:54: openssl_ripemd160_hasher();",
+        "include/xrpl/protocol/digest.h:114: using ripemd160_hasher = openssl_ripemd160_hasher;",
+        "src/libxrpl/protocol/digest.cpp:29: openssl_ripemd160_hasher::openssl_ripemd160_hasher()",
+        "src/libxrpl/protocol/digest.cpp:32: sizeof(decltype(openssl_ripemd160_hasher::ctx_)) ==",
+        "include/xrpl/protocol/digest.h:47: struct openssl_ripemd160_hasher",
+        "include/xrpl/protocol/digest.h:54: openssl_ripemd160_hasher();",
+        "include/xrpl/protocol/digest.h:114: using ripemd160_hasher = openssl_ripemd160_hasher;"
+      ],
+      "notes": "hash160 = RIPEMD-160(SHA-256(pubkey)) (include/xrpl/protocol/digest.h:155-157). 160-bit output gives ~80-bit Grover-era strength. The tree's own comment (AccountID.cpp:145-156) debates this choice. Implemented via OpenSSL low-level RIPEMD160_* (digest.cpp:29-52), removed in OpenSSL 3.x default provider \u2014 a hard blocker for any OpenSSL 3 migration."
+    },
+    {
+      "id": "CRYPTO-06",
+      "title": "TLS for peer / RPC / WebSocket ports (OpenSSL via Boost.Asio)",
+      "primitive": "TLS (OpenSSL 1.1.1w, cipher list TLSv1.2 only)",
+      "provides": "openssl 1.1.1w, boost 1.83.0 (asio ssl)",
+      "quantum_exposure": "quantum-vulnerable",
+      "verification_status": "measured",
+      "hit_count": 5,
+      "patterns": [
+        {
+          "pattern": "defaultCipherList",
+          "hits": 2
+        },
+        {
+          "pattern": "SSL_CTX_set_cipher_list",
+          "hits": 2
+        },
+        {
+          "pattern": "SSL_OP_NO_RENEGOTIATION",
+          "hits": 1
+        }
+      ],
+      "evidence": [
+        "src/libxrpl/basics/make_SSLContext.cpp:104: std::string const defaultCipherList = \"TLSv1.2:!CBC:!DSS:!PSK:!eNULL:!aNULL\";",
+        "src/libxrpl/basics/make_SSLContext.cpp:362: cipherList = defaultCipherList;",
+        "src/libxrpl/basics/make_SSLContext.cpp:365: SSL_CTX_set_cipher_list(c->native_handle(), cipherList.c_str());",
+        "src/libxrpl/basics/make_SSLContext.cpp:367: LogicError(\"SSL_CTX_set_cipher_list failed\");",
+        "src/libxrpl/basics/make_SSLContext.cpp:375: SSL_CTX_set_options(c->native_handle(), SSL_OP_NO_RENEGOTIATION);"
+      ],
+      "notes": "Default cipher list is \"TLSv1.2:!CBC:!DSS:!PSK:!eNULL:!aNULL\" (make_SSLContext.cpp:104); renegotiation disabled (line 375). Key exchange is ECDHE via OpenSSL/Boost.Asio defaults \u2014 NO explicit curve or ECDH configuration exists in src/ or include/, so the negotiated groups are library defaults (unverified which). No TLS 1.3 or min/max protocol version setting exists in the tree (grep: zero hits), so TLS 1.3 availability is UNVERIFIED, not claimed on or off. No PQ KEM."
+    },
+    {
+      "id": "CRYPTO-07",
+      "title": "Self-signed default TLS certificate (ephemeral RSA-2048)",
+      "primitive": "RSA-2048 (ephemeral, generated at startup), X.509 self-signed, SHA-256",
+      "provides": "openssl 1.1.1w",
+      "quantum_exposure": "quantum-vulnerable",
+      "verification_status": "measured",
+      "hit_count": 10,
+      "patterns": [
+        {
+          "pattern": "defaultRSAKeyBits",
+          "hits": 3
+        },
+        {
+          "pattern": "RSA_generate_key_ex",
+          "hits": 2
+        },
+        {
+          "pattern": "X509_sign",
+          "hits": 2
+        },
+        {
+          "pattern": "EVP_PKEY_assign_RSA",
+          "hits": 3
+        }
+      ],
+      "evidence": [
+        "src/libxrpl/basics/make_SSLContext.cpp:66: int defaultRSAKeyBits = 2048;",
+        "src/libxrpl/basics/make_SSLContext.cpp:78: defaultRSAKeyBits accordingly.",
+        "src/libxrpl/basics/make_SSLContext.cpp:120: if (RSA_generate_key_ex(rsa, defaultRSAKeyBits, bn, nullptr) != 1)",
+        "src/libxrpl/basics/make_SSLContext.cpp:120: if (RSA_generate_key_ex(rsa, defaultRSAKeyBits, bn, nullptr) != 1)",
+        "src/libxrpl/basics/make_SSLContext.cpp:121: LogicError(\"RSA_generate_key_ex failure\");",
+        "src/libxrpl/basics/make_SSLContext.cpp:233: if (!X509_sign(x509, defaultEphemeralPrivateKey, EVP_sha256()))",
+        "src/libxrpl/basics/make_SSLContext.cpp:234: LogicError(\"X509_sign failed\");",
+        "src/libxrpl/basics/make_SSLContext.cpp:138: \"EVP_PKEY_assign_RSA: incrementing reference count failed\");"
+      ],
+      "notes": "When no certificate/key is configured, postfiatd generates a 2048-bit RSA key at startup (make_SSLContext.cpp:66, 120) and a self-signed certificate with EVP_sha256() (line 233). RSA-2048 is Shor-vulnerable; the certificate is self-signed (no chain of trust) by design for the default case."
+    },
+    {
+      "id": "CRYPTO-08",
+      "title": "Peer handshake channel binding (SHA-512 of TLS Finished)",
+      "primitive": "SHA-512 over TLS Finished messages (non-standard construction)",
+      "provides": "openssl 1.1.1w",
+      "quantum_exposure": "quantum-reduced",
+      "verification_status": "measured",
+      "hit_count": 8,
+      "patterns": [
+        {
+          "pattern": "hashLastMessage",
+          "hits": 3
+        },
+        {
+          "pattern": "SSL_get_finished",
+          "hits": 3
+        },
+        {
+          "pattern": "SSL_get_peer_finished",
+          "hits": 2
+        }
+      ],
+      "evidence": [
+        "src/xrpld/overlay/detail/Handshake.cpp:128: hashLastMessage(SSL const* ssl, size_t (*get)(const SSL*, void*, size_t))",
+        "src/xrpld/overlay/detail/Handshake.cpp:148: auto const cookie1 = hashLastMessage(ssl.native_handle(), SSL_get_finished);",
+        "src/xrpld/overlay/detail/Handshake.cpp:156: hashLastMessage(ssl.native_handle(), SSL_get_peer_finished);",
+        "src/xrpld/overlay/detail/Handshake.cpp:34: // headers or something for SSL_get_finished?",
+        "src/xrpld/overlay/detail/Handshake.cpp:118: - `SSL_get_finished` or",
+        "src/xrpld/overlay/detail/Handshake.cpp:148: auto const cookie1 = hashLastMessage(ssl.native_handle(), SSL_get_finished);",
+        "src/xrpld/overlay/detail/Handshake.cpp:119: - `SSL_get_peer_finished`.",
+        "src/xrpld/overlay/detail/Handshake.cpp:156: hashLastMessage(ssl.native_handle(), SSL_get_peer_finished);"
+      ],
+      "notes": "Cookie = SHA-512(local Finished) XOR/combined with SHA-512(peer Finished) (src/xrpld/overlay/detail/Handshake.cpp:128-160), then signed with the node key. The code itself notes this is non-standard and cites openssl/openssl#5509 and ripple/rippled#2413. Binding strength inherits SHA-512's Grover reduction and the underlying TLS key exchange's Shor vulnerability."
+    },
+    {
+      "id": "CRYPTO-09",
+      "title": "Cryptographically secure RNG (OpenSSL RAND_bytes)",
+      "primitive": "CSPRNG: OpenSSL RAND_bytes, seeded via RAND_poll + std::random_device",
+      "provides": "openssl 1.1.1w",
+      "quantum_exposure": "not-quantum-relevant",
+      "verification_status": "measured",
+      "hit_count": 6,
+      "patterns": [
+        {
+          "pattern": "RAND_bytes",
+          "hits": 3
+        },
+        {
+          "pattern": "RAND_poll",
+          "hits": 1
+        },
+        {
+          "pattern": "RAND_add",
+          "hits": 2
+        }
+      ],
+      "evidence": [
+        "external/ed25519-donna/ed25519-randombytes.h:88: RAND_bytes(p, (int) len);",
+        "src/libxrpl/crypto/csprng.cpp:80: // RAND_bytes is thread-safe on OpenSSL 1.1.0 and later when compiled",
+        "src/libxrpl/crypto/csprng.cpp:88: RAND_bytes(reinterpret_cast<unsigned char*>(ptr), count);",
+        "src/libxrpl/crypto/csprng.cpp:37: if (RAND_poll() != 1)",
+        "src/libxrpl/crypto/csprng.cpp:68: RAND_add(",
+        "src/libxrpl/crypto/csprng.cpp:74: RAND_add(buffer, count, 0);"
+      ],
+      "notes": "csprng_engine (src/libxrpl/crypto/csprng.cpp:37-92): RAND_poll at startup, extra std::random_device entropy via RAND_add, RAND_bytes for output, throws on failure. Used for secret-key generation (SecretKey.cpp:301) and secp256k1 nonce material via the library. Entropy quality depends on the OS/OpenSSL DRBG, not on any post-quantum primitive."
+    },
+    {
+      "id": "CRYPTO-10",
+      "title": "Deterministic key derivation from 128-bit seeds",
+      "primitive": "SHA-512-Half (Ed25519) / SHA-512 chain (secp256k1 root key)",
+      "provides": "openssl 1.1.1w (SHA-512)",
+      "quantum_exposure": "quantum-reduced",
+      "verification_status": "measured",
+      "hit_count": 31,
+      "patterns": [
+        {
+          "pattern": "generateSecretKey",
+          "hits": 25
+        },
+        {
+          "pattern": "deriveDeterministicRootKey",
+          "hits": 3
+        },
+        {
+          "pattern": "sha512Half_s",
+          "hits": 3
+        }
+      ],
+      "evidence": [
+        "include/xrpl/protocol/SecretKey.h:132: generateSecretKey(KeyType type, Seed const& seed);",
+        "src/libxrpl/protocol/SecretKey.cpp:309: generateSecretKey(KeyType type, Seed const& seed)",
+        "src/libxrpl/protocol/SecretKey.cpp:327: LogicError(\"generateSecretKey: unknown key type\");",
+        "src/libxrpl/protocol/SecretKey.cpp:379: auto const sk = generateSecretKey(type, seed);",
+        "src/test/app/Manifest_test.cpp:564: auto const sk = generateSecretKey(KeyType::ed25519, randomSeed());",
+        "src/libxrpl/protocol/SecretKey.cpp:86: deriveDeterministicRootKey(Seed const& seed)",
+        "src/libxrpl/protocol/SecretKey.cpp:180: : root_(deriveDeterministicRootKey(seed))",
+        "src/libxrpl/protocol/SecretKey.cpp:321: auto key = detail::deriveDeterministicRootKey(seed);"
+      ],
+      "notes": "Ed25519 keys: SHA-512-Half(seed). secp256k1 keys: SHA-512-based root-key derivation with a 32-bit sequence counter (SecretKey.cpp:86-124, 309-327). A 128-bit seed gives at most 128-bit classical entropy regardless of the hash; Grover does not reduce seed entropy below the seed size, but the derived keys are still ECDLP keys (see CRYPTO-01/02). RFC 1751 word-list encoding of seeds exists (src/libxrpl/crypto/RFC1751.cpp)."
+    },
+    {
+      "id": "CRYPTO-11",
+      "title": "Validator manifests (ephemeral signing-key rotation)",
+      "primitive": "Ed25519 or secp256k1 signatures over validator manifests",
+      "provides": "ed25519-donna / secp256k1 0.6.0",
+      "quantum_exposure": "quantum-vulnerable",
+      "verification_status": "measured",
+      "hit_count": 140,
+      "patterns": [
+        {
+          "pattern": "signingKey",
+          "hits": 72
+        },
+        {
+          "pattern": "Manifest::",
+          "hits": 10
+        },
+        {
+          "pattern": "makeManifest",
+          "hits": 58
+        }
+      ],
+      "evidence": [
+        "src/test/app/Manifest_test.cpp:244: m.serialized, m.masterKey, m.signingKey, m.sequence, m.domain);",
+        "src/test/app/Manifest_test.cpp:693: BEAST_EXPECT(manifest->signingKey == spk);",
+        "src/test/app/Manifest_test.cpp:735: BEAST_EXPECT(manifest->signingKey == spk);",
+        "src/test/app/Manifest_test.cpp:751: BEAST_EXPECT(manifest->signingKey == spk);",
+        "src/test/app/Manifest_test.cpp:851: // a signingKey",
+        "src/test/overlay/manifest_flood_test.cpp:35: if (!Manifest::revoked(sequence))",
+        "src/xrpld/app/misc/Manifest.h:163: `Manifest::verify` should be called after constructing manifest.",
+        "src/xrpld/app/misc/detail/Manifest.cpp:120: if (Manifest::revoked(seq))"
+      ],
+      "notes": "Validator manifests carry a master key, an ephemeral signing key, and signatures over both (src/xrpld/app/misc/detail/Manifest.cpp:46-145). Revocation manifests rotate/revoke keys. Manifest trust is the validator-list trust root; a Shor break of the manifest key type would let an attacker forge validator identity. No PQ signature in manifests."
+    },
+    {
+      "id": "CRYPTO-12",
+      "title": "gRPC API transport (ETL for Clio)",
+      "primitive": "No encryption: grpc::InsecureServerCredentials() (plaintext)",
+      "provides": "grpc 1.50.1",
+      "quantum_exposure": "not-quantum-relevant",
+      "verification_status": "measured",
+      "hit_count": 2,
+      "patterns": [
+        {
+          "pattern": "InsecureServerCredentials",
+          "hits": 1
+        },
+        {
+          "pattern": "AddListeningPort",
+          "hits": 1
+        }
+      ],
+      "evidence": [
+        "src/xrpld/app/main/GRPCServer.cpp:572: serverAddress_, grpc::InsecureServerCredentials(), &port);",
+        "src/xrpld/app/main/GRPCServer.cpp:571: builder.AddListeningPort("
+      ],
+      "notes": "The gRPC server binds with InsecureServerCredentials() (src/xrpld/app/main/GRPCServer.cpp:572), with the comment 'Listen on the given address without any authentication mechanism.' The example config documents the port as ETL for Clio with a secure_gateway IP allowlist (cfg/postfiatd-example.cfg, [port_grpc]). No TLS option exists in the gRPC server code. Exposure is a deployment-topology decision, not a library version issue."
+    },
+    {
+      "id": "CRYPTO-13",
+      "title": "Post-quantum primitives in tree",
+      "primitive": "ML-DSA / ML-KEM / SLH-DSA / any NIST PQC algorithm",
+      "provides": "none",
+      "quantum_exposure": "unverified",
+      "verification_status": "measured-absence",
+      "hit_count": 0,
+      "patterns": [
+        {
+          "pattern": "ML-DSA",
+          "hits": 0
+        },
+        {
+          "pattern": "ML-KEM",
+          "hits": 0
+        },
+        {
+          "pattern": "SLH-DSA",
+          "hits": 0
+        },
+        {
+          "pattern": "Kyber",
+          "hits": 0
+        },
+        {
+          "pattern": "Dilithium",
+          "hits": 0
+        },
+        {
+          "pattern": "post-quantum",
+          "hits": 0
+        }
+      ],
+      "evidence": [],
+      "notes": "ZERO hits for any post-quantum term in src/ and include/ (grep, 2026-11-26). Measured absence: no PQC signature, KEM, or hybrid scheme is implemented or referenced. This is a measured fact about the tree, not a claim about upstream rippled or about future work."
+    },
+    {
+      "id": "CRYPTO-14",
+      "title": "Symmetric encryption at rest / HMAC / AES",
+      "primitive": "AES / HMAC / any at-rest encryption",
+      "provides": "none",
+      "quantum_exposure": "unverified",
+      "verification_status": "measured-absence",
+      "hit_count": 0,
+      "patterns": [
+        {
+          "pattern": "HMAC\\(",
+          "hits": 0
+        },
+        {
+          "pattern": "EVP_aes",
+          "hits": 0
+        },
+        {
+          "pattern": "AES_encrypt",
+          "hits": 0
+        }
+      ],
+      "evidence": [],
+      "notes": "ZERO hits for HMAC/AES at-rest encryption calls in src/ (grep, 2026-11-26). The only EVP symmetric-adjacent call is EVP_sha256() for the X.509 signature (CRYPTO-07). Ledger data at rest is protected by RocksDB/NuDB file permissions and OS controls, not by application-layer encryption \u2014 stated as an observed absence, not as a vulnerability verdict."
+    }
+  ]
+}

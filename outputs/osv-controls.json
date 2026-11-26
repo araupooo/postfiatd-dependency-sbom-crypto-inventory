@@ -1,0 +1,22 @@
+{
+  "controls": [
+    {
+      "expected_vuln": "CVE-2024-25629",
+      "method_works": false,
+      "purl": "pkg:github/c-ares/c-ares@1.26.0",
+      "response": {},
+      "returned_ids": [],
+      "transport_error": null
+    },
+    {
+      "expected_vuln": "CVE-2025-3277",
+      "method_works": false,
+      "purl": "pkg:github/sqlite/sqlite@3.48.0",
+      "response": {},
+      "returned_ids": [],
+      "transport_error": null
+    }
+  ],
+  "pinned_commit": "0085a1ff885d6a446369cf73a4430f75af22be55",
+  "query_date_utc": "2026-11-26"
+}

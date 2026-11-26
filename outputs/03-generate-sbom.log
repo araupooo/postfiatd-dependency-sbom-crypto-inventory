@@ -1,0 +1,7 @@
+SBOM packages: 31 (+ postfiatd root)
+  sbom/postfiatd-0085a1ff.spdx.json
+    sha256: c5d69012ffb6de0000f7cb62c9a2e46ca5325b5fb38d34175cd9d4509da9b1ea
+  sbom/postfiatd-0085a1ff.cyclonedx.json
+    sha256: a25a19032e90e11ce900bbd383b212409ccd05e0b9ca6bb260a32ff87eb422ca
+wrote sbom/postfiatd-0085a1ff.spdx.json
+wrote sbom/postfiatd-0085a1ff.cyclonedx.json

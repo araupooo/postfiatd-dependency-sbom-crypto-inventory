@@ -1,0 +1,202 @@
+
+======== Input profiles ========
+Profile host:
+[settings]
+arch=x86_64
+build_type=Release
+compiler=gcc
+compiler.cppstd=gnu17
+compiler.libcxx=libstdc++11
+compiler.version=13
+os=Linux
+
+Profile build:
+[settings]
+arch=x86_64
+build_type=Release
+compiler=gcc
+compiler.cppstd=gnu17
+compiler.libcxx=libstdc++11
+compiler.version=13
+os=Linux
+
+
+======== Computing dependency graph ========
+grpc/1.50.1: Not found in local cache, looking in remotes...
+grpc/1.50.1: Checking remote: conancenter
+Connecting to remote 'conancenter' anonymously
+grpc/1.50.1: Downloaded recipe revision 12e06d669d66951b6a381d695cb715d0
+abseil/20230802.1: Not found in local cache, looking in remotes...
+abseil/20230802.1: Checking remote: conancenter
+abseil/20230802.1: Downloaded recipe revision b0fb32ec7a3ee48c23f78aa249362165
+protobuf/3.21.12: Not found in local cache, looking in remotes...
+protobuf/3.21.12: Checking remote: conancenter
+protobuf/3.21.12: Downloaded recipe revision f4b3baecdc1169c9db2a96e395ca5462
+zlib/1.3.1: Not found in local cache, looking in remotes...
+zlib/1.3.1: Checking remote: conancenter
+zlib/1.3.1: Downloaded recipe revision cac0f6daea041b0ccf42934163defb20
+c-ares/1.34.9: Not found in local cache, looking in remotes...
+c-ares/1.34.9: Checking remote: conancenter
+c-ares/1.34.9: Downloaded recipe revision 52c1c4a734d0a79cbf918dd72fbc6179
+openssl/1.1.1w: Not found in local cache, looking in remotes...
+openssl/1.1.1w: Checking remote: conancenter
+openssl/1.1.1w: Downloaded recipe revision a8f0792d7c5121b954578a7149d23e03
+re2/20230301: Not found in local cache, looking in remotes...
+re2/20230301: Checking remote: conancenter
+re2/20230301: Downloaded recipe revision e697243fa7b545eefaa91fba7ba44146
+cmake/3.31.12: Not found in local cache, looking in remotes...
+cmake/3.31.12: Checking remote: conancenter
+cmake/3.31.12: Downloaded recipe revision 71c3a0c80cc89cde62956db9e69550e0
+libarchive/3.8.1: Not found in local cache, looking in remotes...
+libarchive/3.8.1: Checking remote: conancenter
+libarchive/3.8.1: Downloaded recipe revision ffee18995c706e02bf96e7a2f7042e0d
+lz4/1.10.0: Not found in local cache, looking in remotes...
+lz4/1.10.0: Checking remote: conancenter
+lz4/1.10.0: Downloaded recipe revision 982d9b673900f665a1da109e09c17cab
+cmake/4.5.1: Not found in local cache, looking in remotes...
+cmake/4.5.1: Checking remote: conancenter
+cmake/4.5.1: Downloaded recipe revision 60efa24751433668330c83a45b149047
+nudb/2.0.9: Not found in local cache, looking in remotes...
+nudb/2.0.9: Checking remote: conancenter
+nudb/2.0.9: Downloaded recipe revision 11149c73f8f2baff9a0198fe25971fc7
+boost/1.83.0: Not found in local cache, looking in remotes...
+boost/1.83.0: Checking remote: conancenter
+boost/1.83.0: Downloaded recipe revision d59a21babae33a7dde35565450468f49
+bzip2/1.0.8: Not found in local cache, looking in remotes...
+bzip2/1.0.8: Checking remote: conancenter
+bzip2/1.0.8: Downloaded recipe revision c470882369c2d95c5c77e970c0c7e321
+libbacktrace/cci.20210118: Not found in local cache, looking in remotes...
+libbacktrace/cci.20210118: Checking remote: conancenter
+libbacktrace/cci.20210118: Downloaded recipe revision a7691bfccd8caaf66309df196790a5a1
+b2/5.6.1: Not found in local cache, looking in remotes...
+b2/5.6.1: Checking remote: conancenter
+b2/5.6.1: Downloaded recipe revision 41ae5699a0588de1202afe5b675cc86d
+soci/4.0.3: Not found in local cache, looking in remotes...
+soci/4.0.3: Checking remote: conancenter
+soci/4.0.3: Downloaded recipe revision e726491a03468795453f7c83fc924a96
+sqlite3/3.49.1: Not found in local cache, looking in remotes...
+sqlite3/3.49.1: Checking remote: conancenter
+sqlite3/3.49.1: Downloaded recipe revision 8631739a4c9b93bd3d6b753bac548a63
+doctest/2.4.11: Not found in local cache, looking in remotes...
+doctest/2.4.11: Checking remote: conancenter
+doctest/2.4.11: Downloaded recipe revision a4211dfc329a16ba9f280f9574025659
+date/3.0.4: Not found in local cache, looking in remotes...
+date/3.0.4: Checking remote: conancenter
+date/3.0.4: Downloaded recipe revision 862e11e80030356b53c2c38599ceb32b
+date/3.0.4: WARN: date/3.0.4: package_type 'header-library' is defined, but 'shared' and/or 'header_only' options are present. The package_type will have precedence over the options regardless of their value.
+rocksdb/10.0.1: Not found in local cache, looking in remotes...
+rocksdb/10.0.1: Checking remote: conancenter
+rocksdb/10.0.1: Downloaded recipe revision 359fb06daba8eea143680b45af86f50c
+snappy/1.2.1: Not found in local cache, looking in remotes...
+snappy/1.2.1: Checking remote: conancenter
+snappy/1.2.1: Downloaded recipe revision a308ba649dfa7f2e86db38d8b781124a
+xxhash/0.8.3: Not found in local cache, looking in remotes...
+xxhash/0.8.3: Checking remote: conancenter
+xxhash/0.8.3: Downloaded recipe revision c37268da641a0cf1d38d1f0f01912ef3
+Graph root
+    conanfile.py (xrpl/1.0.9): /home/hatch/workspace/goals/postfiat-task-node-connection/hidden_files/task-6994f1db/work/postfiatd-pinned/conanfile.py
+Requirements
+    abseil/20230802.1#b0fb32ec7a3ee48c23f78aa249362165 - Downloaded (conancenter)
+    boost/1.83.0#d59a21babae33a7dde35565450468f49 - Downloaded (conancenter)
+    bzip2/1.0.8#c470882369c2d95c5c77e970c0c7e321 - Downloaded (conancenter)
+    c-ares/1.34.9#52c1c4a734d0a79cbf918dd72fbc6179 - Downloaded (conancenter)
+    date/3.0.4#862e11e80030356b53c2c38599ceb32b - Downloaded (conancenter)
+    grpc/1.50.1#12e06d669d66951b6a381d695cb715d0 - Downloaded (conancenter)
+    libarchive/3.8.1#ffee18995c706e02bf96e7a2f7042e0d - Downloaded (conancenter)
+    libbacktrace/cci.20210118#a7691bfccd8caaf66309df196790a5a1 - Downloaded (conancenter)
+    lz4/1.10.0#982d9b673900f665a1da109e09c17cab - Downloaded (conancenter)
+    nudb/2.0.9#11149c73f8f2baff9a0198fe25971fc7 - Downloaded (conancenter)
+    openssl/1.1.1w#a8f0792d7c5121b954578a7149d23e03 - Downloaded (conancenter)
+    protobuf/3.21.12#f4b3baecdc1169c9db2a96e395ca5462 - Downloaded (conancenter)
+    re2/20230301#e697243fa7b545eefaa91fba7ba44146 - Downloaded (conancenter)
+    rocksdb/10.0.1#359fb06daba8eea143680b45af86f50c - Downloaded (conancenter)
+    snappy/1.2.1#a308ba649dfa7f2e86db38d8b781124a - Downloaded (conancenter)
+    soci/4.0.3#e726491a03468795453f7c83fc924a96 - Downloaded (conancenter)
+    sqlite3/3.49.1#8631739a4c9b93bd3d6b753bac548a63 - Downloaded (conancenter)
+    xxhash/0.8.3#c37268da641a0cf1d38d1f0f01912ef3 - Downloaded (conancenter)
+    zlib/1.3.1#cac0f6daea041b0ccf42934163defb20 - Downloaded (conancenter)
+Test requirements
+    doctest/2.4.11#a4211dfc329a16ba9f280f9574025659 - Downloaded (conancenter)
+Build requirements
+    b2/5.6.1#41ae5699a0588de1202afe5b675cc86d - Downloaded (conancenter)
+    cmake/3.31.12#71c3a0c80cc89cde62956db9e69550e0 - Downloaded (conancenter)
+    cmake/4.5.1#60efa24751433668330c83a45b149047 - Downloaded (conancenter)
+    protobuf/3.21.12#f4b3baecdc1169c9db2a96e395ca5462 - Downloaded (conancenter)
+    zlib/1.3.1#cac0f6daea041b0ccf42934163defb20 - Downloaded (conancenter)
+Resolved version ranges
+    abseil/[>=20230125.3 <=20230802.1]: abseil/20230802.1
+    b2/[>=5.2 <6]: b2/5.6.1
+    c-ares/[>=1.19.1 <2]: c-ares/1.34.9
+    cmake/[>=3.17]: cmake/4.5.1
+    cmake/[>=3.25 <4]: cmake/3.31.12
+    snappy/[>=1.1.10 <2]: snappy/1.2.1
+    zlib/[>=1.2.11 <2]: zlib/1.3.1
+Overrides
+    protobuf/3.21.12: [None, 'protobuf/3.21.12']
+    boost/1.83.0#d59a21babae33a7dde35565450468f49: [None, 'boost/1.83.0']
+    lz4/1.9.4: ['lz4/1.10.0']
+    boost/[>=1.83.0 <1.91.0]: ['boost/1.83.0']
+    sqlite3/[>=3.44 <4]: ['sqlite3/3.49.1']
+    lz4/[>=1.9.4 <2]: ['lz4/1.10.0#982d9b673900f665a1da109e09c17cab']
+Deprecated
+    protobuf/3.21.12: protobuf 3.x is no longer supported by its authors - this version is kept for legacy reasons. Please migrate to a newer version
+WARN: risk: There are deprecated packages in the graph
+
+======== Computing necessary packages ========
+rocksdb/10.0.1: Main binary package '27a4301b0b8fc4000894eed1b805971f2a7f890f' missing
+rocksdb/10.0.1: Checking 5 compatible configurations
+rocksdb/10.0.1: Compatible configurations not found in cache, checking servers
+rocksdb/10.0.1: 'abe003d44972d57a1a217c090e91c662e00b4aa0': compiler.cppstd=17
+rocksdb/10.0.1: '9fed9fc2b15ac4f0284d1f58bf93502d7611f69b': compiler.cppstd=20
+rocksdb/10.0.1: '2e15b2ff4cfbbd077860977de2324b941afb05aa': compiler.cppstd=gnu20
+rocksdb/10.0.1: '13d3bb1fdac9e376c9d749490682b6073e0af82f': compiler.cppstd=23
+rocksdb/10.0.1: '88a89c3ade7cbaada06a1904866670d59379e3c4': compiler.cppstd=gnu23
+rocksdb/10.0.1: No compatible configuration found
+soci/4.0.3: WARN: risk: Transitive dependencies with 'headers=False' effect in 'package_id' is not necessary and suboptimal. Use required_conan_version='>=2.28' to activate it
+soci/4.0.3: Main binary package 'dccfcc3f650ef7cf3bbe07034714f666deb6a60a' missing
+soci/4.0.3: Checking 9 compatible configurations
+soci/4.0.3: Compatible configurations not found in cache, checking servers
+soci/4.0.3: 'c11462b27650946a5c999de88e5513349f6bf04c': compiler.cppstd=11
+soci/4.0.3: '2222c11f9139fbba41a301fdeb6b0847b6082f4a': compiler.cppstd=gnu11
+soci/4.0.3: '8f12a8ba4feaec9c899486959a1d6af32b6cbab2': compiler.cppstd=14
+soci/4.0.3: '26dbd8d768be0fef803a032cfad78a812c27bb72': compiler.cppstd=gnu14
+soci/4.0.3: '2934c399a04362840a5b7355240b52883fac5789': compiler.cppstd=17
+soci/4.0.3: '69550d686dcba803c2255bcc792e6b716db596d3': compiler.cppstd=20
+soci/4.0.3: '59920a057cdb11e925993faf965eda07da729c93': compiler.cppstd=gnu20
+soci/4.0.3: '869409236f0474d3a5f68f8ae1b3b1ef4b81afa4': compiler.cppstd=23
+soci/4.0.3: '6e934634359dfb4ab79a11e665fa26600305cad2': compiler.cppstd=gnu23
+soci/4.0.3: No compatible configuration found
+
+A new experimental approach for binary compatibility detection is available.
+    Enable it by setting the core.graph:compatibility_mode=optimized conf
+    and get improved performance when querying multiple compatible binaries in remotes.
+
+conanfile.py (xrpl/1.0.9): WARN: risk: Transitive dependencies with 'headers=False' effect in 'package_id' is not necessary and suboptimal. Use required_conan_version='>=2.28' to activate it
+Requirements
+    abseil/20230802.1#b0fb32ec7a3ee48c23f78aa249362165:838c313f1b7acdfd23b222f0156e7c264dcc2515#38d23b669f729db73816f397133ba41a - Download (conancenter)
+    boost/1.83.0#d59a21babae33a7dde35565450468f49:41436e4c1ac04655d0ea869a5a23e93f4f89fd4f#bafe4a5ee2965f07519cbb2389522461 - Download (conancenter)
+    bzip2/1.0.8#c470882369c2d95c5c77e970c0c7e321:432d7695adc526147073285e155d2ca0340bc76d#133f71a59b79de7c74a2c3af9cb9bc7b - Download (conancenter)
+    c-ares/1.34.9#52c1c4a734d0a79cbf918dd72fbc6179:47c145dd28f761c25e8f32653b9212608868cf79#e304ae14a0b1f4e07bb186a75182c964 - Download (conancenter)
+    date/3.0.4#862e11e80030356b53c2c38599ceb32b:da39a3ee5e6b4b0d3255bfef95601890afd80709#1eb662558845660527ae474965a704f7 - Download (conancenter)
+    grpc/1.50.1#12e06d669d66951b6a381d695cb715d0:bf176b774bd104411652aadf64dd41722ad9b468 - Missing
+    libarchive/3.8.1#ffee18995c706e02bf96e7a2f7042e0d:23543bb08c18e11dd9e63dee840452fa3d56ccac - Missing
+    libbacktrace/cci.20210118#a7691bfccd8caaf66309df196790a5a1:c81087b06d1a5beef0ad711fc32d45f7a425a8f3#3bb49ca4eb3a1ffca9b5c9509c79d237 - Download (conancenter)
+    lz4/1.10.0#982d9b673900f665a1da109e09c17cab:c81087b06d1a5beef0ad711fc32d45f7a425a8f3#fb0d28c6d23fa2b55f8a387f1a2e9f61 - Download (conancenter)
+    nudb/2.0.9#11149c73f8f2baff9a0198fe25971fc7:da39a3ee5e6b4b0d3255bfef95601890afd80709#b16f723051bd2884dd061fd583826512 - Download (conancenter)
+    openssl/1.1.1w#a8f0792d7c5121b954578a7149d23e03:b469f21fcc058ee35f066fed6f93fcff17a9b73a#7a50b7c44affd949d7a494349a244373 - Download (conancenter)
+    protobuf/3.21.12#f4b3baecdc1169c9db2a96e395ca5462:c42f1248a3b63be5afcfa96cd3eae924f6154d21#0e457662ba046437bb026528c280b712 - Download (conancenter)
+    re2/20230301#e697243fa7b545eefaa91fba7ba44146:d82d61b049c28e3ef95ee28911620ac73218b75e#3a32c8e589af619f0ccc6734e2dd4835 - Download (conancenter)
+    rocksdb/10.0.1#359fb06daba8eea143680b45af86f50c:27a4301b0b8fc4000894eed1b805971f2a7f890f - Missing
+    snappy/1.2.1#a308ba649dfa7f2e86db38d8b781124a:264f1c65040e4e97f26e0fb49f5d22a8a16b700f#51ba2a7c61e15c68475f3804f38e0abb - Download (conancenter)
+    soci/4.0.3#e726491a03468795453f7c83fc924a96:dccfcc3f650ef7cf3bbe07034714f666deb6a60a - Missing
+    sqlite3/3.49.1#8631739a4c9b93bd3d6b753bac548a63:783d5ba809587b3017d41b5d1290f613fd2899b3 - Missing
+    xxhash/0.8.3#c37268da641a0cf1d38d1f0f01912ef3:1dff03a99df1766470e0804a631f96d18eaba011#ebb225439ea89036ce8de0b41f440b99 - Download (conancenter)
+    zlib/1.3.1#cac0f6daea041b0ccf42934163defb20:c81087b06d1a5beef0ad711fc32d45f7a425a8f3#d3a7706ae25c74b78bafbb0b63cb5dcf - Download (conancenter)
+Test requirements
+    doctest/2.4.11#a4211dfc329a16ba9f280f9574025659:da39a3ee5e6b4b0d3255bfef95601890afd80709#c64e99fa3cf2e427c3b1dfd6c0ff0f68 - Download (conancenter)
+Build requirements
+    protobuf/3.21.12#f4b3baecdc1169c9db2a96e395ca5462:c42f1248a3b63be5afcfa96cd3eae924f6154d21#0e457662ba046437bb026528c280b712 - Download (conancenter)
+Skipped build binaries
+    b2/5.6.1, cmake/3.31.12, cmake/4.5.1, zlib/1.3.1
+WARN: There are some error(s) in the graph:
+    - Missing packages: rocksdb, grpc, libarchive, sqlite3, soci

@@ -1,0 +1,502 @@
+{
+  "pinned_commit": "0085a1ff885d6a446369cf73a4430f75af22be55",
+  "queries": [
+    {
+      "package": "abseil",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "abseil"
+        },
+        "version": "20230802.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "20230802.1"
+    },
+    {
+      "package": "antithesis-sdk-cpp",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "antithesis-sdk-cpp"
+        },
+        "version": "0.4.4"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "0.4.4"
+    },
+    {
+      "package": "b2",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "b2"
+        },
+        "version": "5.6.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "5.6.1"
+    },
+    {
+      "package": "boost",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "boost"
+        },
+        "version": "1.83.0"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.83.0"
+    },
+    {
+      "package": "bzip2",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "bzip2"
+        },
+        "version": "1.0.8"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.0.8"
+    },
+    {
+      "package": "c-ares",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "c-ares"
+        },
+        "version": "1.34.9"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.34.9"
+    },
+    {
+      "package": "cmake",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "cmake"
+        },
+        "version": "3.25.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "3.25.1"
+    },
+    {
+      "package": "cmake",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "cmake"
+        },
+        "version": "3.31.12"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "3.31.12"
+    },
+    {
+      "package": "conan",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "conan"
+        },
+        "version": "2.17"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "2.17"
+    },
+    {
+      "package": "date",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "date"
+        },
+        "version": "3.0.4"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "3.0.4"
+    },
+    {
+      "package": "doctest",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "doctest"
+        },
+        "version": "2.4.11"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "2.4.11"
+    },
+    {
+      "package": "gcc",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "gcc"
+        },
+        "version": "13"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "13"
+    },
+    {
+      "package": "grpc",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "grpc"
+        },
+        "version": "1.50.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.50.1"
+    },
+    {
+      "package": "jemalloc",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "jemalloc"
+        },
+        "version": "5.3.0"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "5.3.0"
+    },
+    {
+      "package": "libarchive",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "libarchive"
+        },
+        "version": "3.8.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "3.8.1"
+    },
+    {
+      "package": "libbacktrace",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "libbacktrace"
+        },
+        "version": "cci.20210118"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "cci.20210118"
+    },
+    {
+      "package": "lz4",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "lz4"
+        },
+        "version": "1.10.0"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.10.0"
+    },
+    {
+      "package": "nudb",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "nudb"
+        },
+        "version": "2.0.9"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "2.0.9"
+    },
+    {
+      "package": "openssl",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "openssl"
+        },
+        "version": "1.1.1w"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.1.1w"
+    },
+    {
+      "package": "postfiatd",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "postfiatd"
+        },
+        "version": "1.0.9"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.0.9"
+    },
+    {
+      "package": "protobuf",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "protobuf"
+        },
+        "version": "3.21.12"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "3.21.12"
+    },
+    {
+      "package": "python",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "python"
+        },
+        "version": "3.11"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "3.11"
+    },
+    {
+      "package": "re2",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "re2"
+        },
+        "version": "20230301"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "20230301"
+    },
+    {
+      "package": "rocksdb",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "rocksdb"
+        },
+        "version": "10.0.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "10.0.1"
+    },
+    {
+      "package": "secp256k1",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "secp256k1"
+        },
+        "version": "0.6.0"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "0.6.0"
+    },
+    {
+      "package": "snappy",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "snappy"
+        },
+        "version": "1.2.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.2.1"
+    },
+    {
+      "package": "soci",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "soci"
+        },
+        "version": "4.0.3"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "4.0.3"
+    },
+    {
+      "package": "sqlite3",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "sqlite3"
+        },
+        "version": "3.49.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "3.49.1"
+    },
+    {
+      "package": "ubuntu",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "ubuntu"
+        },
+        "version": "ubuntu:24.04"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "ubuntu:24.04"
+    },
+    {
+      "package": "xxhash",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "xxhash"
+        },
+        "version": "0.8.3"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "0.8.3"
+    },
+    {
+      "package": "zlib",
+      "payload": {
+        "package": {
+          "ecosystem": "Conan",
+          "name": "zlib"
+        },
+        "version": "1.3.1"
+      },
+      "response": {
+        "code": 3,
+        "message": "invalid ecosystem"
+      },
+      "transport_error": null,
+      "version": "1.3.1"
+    }
+  ],
+  "query_date_utc": "2026-11-26"
+}

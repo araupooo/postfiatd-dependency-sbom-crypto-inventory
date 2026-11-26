@@ -1,0 +1,234 @@
+{
+  "pinned_commit": "0085a1ff885d6a446369cf73a4430f75af22be55",
+  "pinned_repo": "postfiatorg/postfiatd",
+  "generated_by": "scripts/extract_deps.py (manifest + source parsing; no build)",
+  "dependency_count": 25,
+  "dependencies": [
+    {
+      "name": "boost",
+      "version": "1.83.0",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 107,
+      "version_status": "pinned",
+      "note": "via requirements(); force=True where stated CMake minimum 1.82 at cmake/deps/Boost.cmake:1."
+    },
+    {
+      "name": "date",
+      "version": "3.0.4",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 108,
+      "version_status": "pinned",
+      "note": "via requirements(); force=True where stated"
+    },
+    {
+      "name": "grpc",
+      "version": "1.50.1",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 27,
+      "version_status": "pinned",
+      "note": ""
+    },
+    {
+      "name": "libarchive",
+      "version": "3.8.1",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 28,
+      "version_status": "pinned",
+      "note": ""
+    },
+    {
+      "name": "lz4",
+      "version": "1.10.0",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 109,
+      "version_status": "pinned",
+      "note": "via requirements(); force=True where stated"
+    },
+    {
+      "name": "nudb",
+      "version": "2.0.9",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 29,
+      "version_status": "pinned",
+      "note": ""
+    },
+    {
+      "name": "openssl",
+      "version": "1.1.1w",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 30,
+      "version_status": "pinned",
+      "note": " CMake minimum 1.1.1 at CMakeLists.txt:88."
+    },
+    {
+      "name": "protobuf",
+      "version": "3.21.12",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 110,
+      "version_status": "pinned",
+      "note": "via requirements(); force=True where stated"
+    },
+    {
+      "name": "rocksdb",
+      "version": "10.0.1",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 115,
+      "version_status": "pinned",
+      "note": "only when option rocksdb=True (default True)"
+    },
+    {
+      "name": "soci",
+      "version": "4.0.3",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 31,
+      "version_status": "pinned",
+      "note": ""
+    },
+    {
+      "name": "sqlite3",
+      "version": "3.49.1",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 111,
+      "version_status": "pinned",
+      "note": "via requirements(); force=True where stated"
+    },
+    {
+      "name": "xxhash",
+      "version": "0.8.3",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 116,
+      "version_status": "pinned",
+      "note": "via requirements(); force=True where stated"
+    },
+    {
+      "name": "zlib",
+      "version": "1.3.1",
+      "kind": "direct",
+      "source_file": "conanfile.py",
+      "source_line": 32,
+      "version_status": "pinned",
+      "note": ""
+    },
+    {
+      "name": "jemalloc",
+      "version": "5.3.0",
+      "kind": "optional",
+      "source_file": "conanfile.py",
+      "source_line": 113,
+      "version_status": "pinned",
+      "note": "only when option jemalloc=True (default False)"
+    },
+    {
+      "name": "postfiatd",
+      "version": "1.0.9",
+      "kind": "self",
+      "source_file": "src/libxrpl/protocol/BuildInfo.cpp",
+      "source_line": 39,
+      "version_status": "pinned",
+      "note": "the assessed software itself, not a dependency"
+    },
+    {
+      "name": "doctest",
+      "version": "2.4.11",
+      "kind": "test",
+      "source_file": "conanfile.py",
+      "source_line": 36,
+      "version_status": "pinned",
+      "note": ""
+    },
+    {
+      "name": "protobuf",
+      "version": "3.21.12",
+      "kind": "tool",
+      "source_file": "conanfile.py",
+      "source_line": 40,
+      "version_status": "pinned",
+      "note": ""
+    },
+    {
+      "name": "cmake",
+      "version": "3.25.1",
+      "kind": "toolchain",
+      "source_file": "Dockerfile",
+      "source_line": 39,
+      "version_status": "pinned",
+      "note": "CMake built from source in the Docker build"
+    },
+    {
+      "name": "conan",
+      "version": "2.17",
+      "kind": "toolchain",
+      "source_file": "BUILD.md",
+      "source_line": 41,
+      "version_status": "minimum",
+      "note": "documented minimum in BUILD.md"
+    },
+    {
+      "name": "gcc",
+      "version": "13",
+      "kind": "toolchain",
+      "source_file": "Dockerfile",
+      "source_line": 32,
+      "version_status": "pinned",
+      "note": "compiler installed in the Docker build (gcc-13/g++-13)"
+    },
+    {
+      "name": "python",
+      "version": "3.11",
+      "kind": "toolchain",
+      "source_file": "BUILD.md",
+      "source_line": 40,
+      "version_status": "minimum",
+      "note": "documented minimum in BUILD.md"
+    },
+    {
+      "name": "ubuntu",
+      "version": "ubuntu:24.04",
+      "kind": "toolchain",
+      "source_file": "Dockerfile",
+      "source_line": 17,
+      "version_status": "pinned",
+      "note": "base image of the multi-stage Docker build"
+    },
+    {
+      "name": "antithesis-sdk-cpp",
+      "version": "0.4.4",
+      "kind": "vendored",
+      "source_file": "external/antithesis-sdk/CMakeLists.txt",
+      "source_line": 4,
+      "version_status": "pinned",
+      "note": "vendored copy; upstream antithesishq/antithesis-sdk-cpp"
+    },
+    {
+      "name": "ed25519-donna",
+      "version": null,
+      "kind": "vendored",
+      "source_file": "external/ed25519-donna/ed25519.h",
+      "source_line": 1,
+      "version_status": "unversioned",
+      "note": "UNVERSIONED snapshot: no version macro, CHANGELOG, or release tag in the vendored tree; consolidated into external/ 2024-04-19 (commit e2384885f); upstream floodyberry/ed25519-donna (no releases published)"
+    },
+    {
+      "name": "secp256k1",
+      "version": "0.6.0",
+      "kind": "vendored",
+      "source_file": "external/secp256k1/configure.ac",
+      "source_line": 6,
+      "version_status": "pinned",
+      "note": "vendored copy; CHANGELOG.md confirms [0.6.0] - 2024-11-04 as latest entry; upstream bitcoin-core/secp256k1"
+    }
+  ],
+  "transitive_note": "Transitive dependencies are NOT pinned in this repo (no conan.lock). Exact transitive versions were resolved live with Conan 2.34.0 `conan graph info` against Conan Center only on 2026-11-26; see outputs/conan-graph-deps.json. CAVEAT: the project's documented remote is the xrplf fork (https://conan.ripplex.io, BUILD.md lines 121-130), which was unreachable from this build environment (curl exit 000), so patched-recipe versions from that fork could differ from the Conan Center resolution recorded here. That difference is an open verification item, not a measured fact."
+}

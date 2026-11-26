@@ -1,0 +1,25 @@
+WARNING: cmake resolved to two versions: 3.31.12 and 4.5.1
+graph nodes: 28  unique packages: 22
+  transitive abseil         20230802.1       rrev=b0fb32ec7a3ee48c23f78aa249362165 remote=conancenter
+  tool       b2             5.6.1            rrev=41ae5699a0588de1202afe5b675cc86d remote=conancenter
+  direct     boost          1.83.0           rrev=d59a21babae33a7dde35565450468f49 remote=conancenter
+  transitive bzip2          1.0.8            rrev=c470882369c2d95c5c77e970c0c7e321 remote=conancenter
+  transitive c-ares         1.34.9           rrev=52c1c4a734d0a79cbf918dd72fbc6179 remote=conancenter
+  tool       cmake          3.31.12          rrev=71c3a0c80cc89cde62956db9e69550e0 remote=conancenter
+  direct     date           3.0.4            rrev=862e11e80030356b53c2c38599ceb32b remote=conancenter
+  test       doctest        2.4.11           rrev=a4211dfc329a16ba9f280f9574025659 remote=conancenter
+  direct     grpc           1.50.1           rrev=12e06d669d66951b6a381d695cb715d0 remote=conancenter
+  direct     libarchive     3.8.1            rrev=ffee18995c706e02bf96e7a2f7042e0d remote=conancenter
+  transitive libbacktrace   cci.20210118     rrev=a7691bfccd8caaf66309df196790a5a1 remote=conancenter
+  direct     lz4            1.10.0           rrev=982d9b673900f665a1da109e09c17cab remote=conancenter
+  direct     nudb           2.0.9            rrev=11149c73f8f2baff9a0198fe25971fc7 remote=conancenter
+  direct     openssl        1.1.1w           rrev=a8f0792d7c5121b954578a7149d23e03 remote=conancenter
+  direct     protobuf       3.21.12          rrev=f4b3baecdc1169c9db2a96e395ca5462 remote=conancenter
+  transitive re2            20230301         rrev=e697243fa7b545eefaa91fba7ba44146 remote=conancenter
+  direct     rocksdb        10.0.1           rrev=359fb06daba8eea143680b45af86f50c remote=conancenter
+  transitive snappy         1.2.1            rrev=a308ba649dfa7f2e86db38d8b781124a remote=conancenter
+  direct     soci           4.0.3            rrev=e726491a03468795453f7c83fc924a96 remote=conancenter
+  direct     sqlite3        3.49.1           rrev=8631739a4c9b93bd3d6b753bac548a63 remote=conancenter
+  direct     xxhash         0.8.3            rrev=c37268da641a0cf1d38d1f0f01912ef3 remote=conancenter
+  direct     zlib           1.3.1            rrev=cac0f6daea041b0ccf42934163defb20 remote=conancenter
+wrote outputs/conan-graph-deps.json

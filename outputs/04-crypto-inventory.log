@@ -1,0 +1,16 @@
+CRYPTO-01 Ed25519 transaction / validator signatures (ed25519-donna)   hits=  21 [quantum-vulnerable] measured
+CRYPTO-02 secp256k1 ECDSA transaction / validator signatures           hits= 127 [quantum-vulnerable] measured
+CRYPTO-03 SHA-512 and SHA-512-Half ledger / transaction hashing        hits=  66 [quantum-reduced] measured
+CRYPTO-04 SHA-256 hashing                                              hits=  21 [quantum-reduced] measured
+CRYPTO-05 RIPEMD-160 in account-ID derivation (hash160)                hits=  16 [quantum-reduced] measured
+CRYPTO-06 TLS for peer / RPC / WebSocket ports (OpenSSL via Boost.Asio hits=   5 [quantum-vulnerable] measured
+CRYPTO-07 Self-signed default TLS certificate (ephemeral RSA-2048)     hits=  10 [quantum-vulnerable] measured
+CRYPTO-08 Peer handshake channel binding (SHA-512 of TLS Finished)     hits=   8 [quantum-reduced] measured
+CRYPTO-09 Cryptographically secure RNG (OpenSSL RAND_bytes)            hits=   6 [not-quantum-relevant] measured
+CRYPTO-10 Deterministic key derivation from 128-bit seeds              hits=  31 [quantum-reduced] measured
+CRYPTO-11 Validator manifests (ephemeral signing-key rotation)         hits= 140 [quantum-vulnerable] measured
+CRYPTO-12 gRPC API transport (ETL for Clio)                            hits=   2 [not-quantum-relevant] measured
+CRYPTO-13 Post-quantum primitives in tree                              hits=   0 [unverified] measured-absence
+CRYPTO-14 Symmetric encryption at rest / HMAC / AES                    hits=   0 [unverified] measured-absence
+wrote inventory/crypto-inventory.json
+wrote inventory/crypto-inventory.md

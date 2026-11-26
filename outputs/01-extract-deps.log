@@ -1,0 +1,27 @@
+dependencies: 25
+  direct     boost                  1.83.0       conanfile.py:107
+  direct     date                   3.0.4        conanfile.py:108
+  direct     grpc                   1.50.1       conanfile.py:27
+  direct     libarchive             3.8.1        conanfile.py:28
+  direct     lz4                    1.10.0       conanfile.py:109
+  direct     nudb                   2.0.9        conanfile.py:29
+  direct     openssl                1.1.1w       conanfile.py:30
+  direct     protobuf               3.21.12      conanfile.py:110
+  direct     rocksdb                10.0.1       conanfile.py:115
+  direct     soci                   4.0.3        conanfile.py:31
+  direct     sqlite3                3.49.1       conanfile.py:111
+  direct     xxhash                 0.8.3        conanfile.py:116
+  direct     zlib                   1.3.1        conanfile.py:32
+  optional   jemalloc               5.3.0        conanfile.py:113
+  self       postfiatd              1.0.9        src/libxrpl/protocol/BuildInfo.cpp:39
+  test       doctest                2.4.11       conanfile.py:36
+  tool       protobuf               3.21.12      conanfile.py:40
+  toolchain  cmake                  3.25.1       Dockerfile:39
+  toolchain  conan                  2.17         BUILD.md:41
+  toolchain  gcc                    13           Dockerfile:32
+  toolchain  python                 3.11         BUILD.md:40
+  toolchain  ubuntu                 ubuntu:24.04 Dockerfile:17
+  vendored   antithesis-sdk-cpp     0.4.4        external/antithesis-sdk/CMakeLists.txt:4
+  vendored   ed25519-donna          (unpinned)   external/ed25519-donna/ed25519.h:1
+  vendored   secp256k1              0.6.0        external/secp256k1/configure.ac:6
+wrote outputs/dependencies.json

@@ -1,0 +1,1031 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "postfiatd-0085a1ff-sbom",
+  "documentNamespace": "https://github.com/postfiatorg/postfiatd/sbom/postfiatd-0085a1ff-5135b044-c5d9-5960-ab06-12303e5dd314",
+  "creationInfo": {
+    "created": "2026-11-26T14:26:00Z",
+    "creators": [
+      "Tool: postfiatd-sbom-harness (scripts/generate_sbom.py)"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-Package-postfiatd"
+  ],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-postfiatd",
+      "name": "postfiatd",
+      "versionInfo": "1.0.9",
+      "supplier": "Organization: PostFiat",
+      "downloadLocation": "https://github.com/postfiatorg/postfiatd",
+      "filesAnalyzed": false,
+      "licenseConcluded": "ISC",
+      "licenseDeclared": "ISC",
+      "copyrightText": "NOASSERTION",
+      "description": "PostFiat daemon (XRP Ledger protocol, C++), commit 0085a1ff885d6a446369cf73a4430f75af22be55",
+      "externalRefs": [
+        {
+          "referenceCategory": "OTHER",
+          "referenceType": "git-commit",
+          "referenceLocator": "0085a1ff885d6a446369cf73a4430f75af22be55"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-abseil",
+      "name": "abseil",
+      "versionInfo": "20230802.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/abseil/abseil-cpp",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "description": "Transitive dependency resolved by Conan recipe; rrev b0fb32ec7a3ee48c23f78aa249362165.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/abseil@20230802.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=transitive; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26); conan recipe rrev=b0fb32ec7a3ee48c23f78aa249362165"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-antithesis-sdk-cpp",
+      "name": "antithesis-sdk-cpp",
+      "versionInfo": "0.4.4",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/antithesishq/antithesis-sdk-cpp",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "description": "Vendored copy in external/antithesis-sdk, version 0.4.4 from CMakeLists.txt.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "NOASSERTION"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=vendored; version_status=pinned; source=external/antithesis-sdk/CMakeLists.txt:4"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-b2",
+      "name": "b2",
+      "versionInfo": "5.6.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://www.bfgroup.xyz/b2/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSL-1.0",
+      "licenseDeclared": "BSL-1.0",
+      "copyrightText": "NOASSERTION",
+      "description": "Transitive dependency resolved by Conan recipe; rrev 41ae5699a0588de1202afe5b675cc86d.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/b2@5.6.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=tool; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26); conan recipe rrev=41ae5699a0588de1202afe5b675cc86d"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-boost",
+      "name": "boost",
+      "versionInfo": "1.83.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://www.boost.org",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSL-1.0",
+      "licenseDeclared": "BSL-1.0",
+      "copyrightText": "NOASSERTION",
+      "description": "via requirements(); force=True where stated CMake minimum 1.82 at cmake/deps/Boost.cmake:1.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/boost@1.83.0"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:107; conan recipe rrev=d59a21babae33a7dde35565450468f49"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-bzip2",
+      "name": "bzip2",
+      "versionInfo": "1.0.8",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://sourceware.org/bzip2",
+      "filesAnalyzed": false,
+      "licenseConcluded": "bzip2-1.0.6",
+      "licenseDeclared": "bzip2-1.0.6",
+      "copyrightText": "NOASSERTION",
+      "description": "Transitive dependency resolved by Conan recipe; rrev c470882369c2d95c5c77e970c0c7e321.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/bzip2@1.0.8"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=transitive; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26); conan recipe rrev=c470882369c2d95c5c77e970c0c7e321"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-c-ares",
+      "name": "c-ares",
+      "versionInfo": "1.34.9",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://c-ares.haxx.se/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "description": "Transitive dependency resolved by Conan recipe; rrev 52c1c4a734d0a79cbf918dd72fbc6179.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/c-ares@1.34.9"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=transitive; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26); conan recipe rrev=52c1c4a734d0a79cbf918dd72fbc6179"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-cmake",
+      "name": "cmake",
+      "versionInfo": "3.25.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/Kitware/CMake",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "CMake built from source in the Docker build Conan graph also resolves this name as a tool-require at version 3.31.12 (rrev 71c3a0c80cc89cde62956db9e69550e0).",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/cmake@3.25.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=toolchain; version_status=pinned; source=Dockerfile:39; conan recipe rrev=71c3a0c80cc89cde62956db9e69550e0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-cmake--tool-requires-",
+      "name": "cmake (tool-requires)",
+      "versionInfo": "3.31.12 and 4.5.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "CMake versions pulled as tool-requires by Conan recipes (grpc/protobuf toolchains); distinct from the Docker-pinned CMake 3.25.1 used to build postfiatd itself.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/cmake (tool-requires)@3.31.12 and 4.5.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=tool; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26)"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-conan",
+      "name": "conan",
+      "versionInfo": "2.17",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "documented minimum in BUILD.md",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/conan@2.17"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=toolchain; version_status=minimum; source=BUILD.md:41"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-date",
+      "name": "date",
+      "versionInfo": "3.0.4",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/HowardHinnant/date",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "description": "via requirements(); force=True where stated",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/date@3.0.4"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:108; conan recipe rrev=862e11e80030356b53c2c38599ceb32b"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-doctest",
+      "name": "doctest",
+      "versionInfo": "2.4.11",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/onqtam/doctest",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "description": "",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/doctest@2.4.11"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=test; version_status=pinned; source=conanfile.py:36; conan recipe rrev=a4211dfc329a16ba9f280f9574025659"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-ed25519-donna",
+      "name": "ed25519-donna",
+      "versionInfo": "NOASSERTION",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/floodyberry/ed25519-donna",
+      "filesAnalyzed": false,
+      "licenseConcluded": "LicenseRef-Public-Domain",
+      "licenseDeclared": "LicenseRef-Public-Domain",
+      "copyrightText": "NOASSERTION",
+      "description": "Vendored unversioned snapshot in external/ed25519-donna; ed25519.c SHA-256 matches upstream master HEAD as of 2026-11-26.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "NOASSERTION"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=vendored; version_status=unversioned; source=external/ed25519-donna/ed25519.h:1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-gcc",
+      "name": "gcc",
+      "versionInfo": "13",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "compiler installed in the Docker build (gcc-13/g++-13)",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/gcc@13"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=toolchain; version_status=pinned; source=Dockerfile:32"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-grpc",
+      "name": "grpc",
+      "versionInfo": "1.50.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/grpc/grpc",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "description": "",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/grpc@1.50.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:27; conan recipe rrev=12e06d669d66951b6a381d695cb715d0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-jemalloc",
+      "name": "jemalloc",
+      "versionInfo": "5.3.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "only when option jemalloc=True (default False)",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/jemalloc@5.3.0"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=optional; version_status=pinned; source=conanfile.py:113"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libarchive",
+      "name": "libarchive",
+      "versionInfo": "3.8.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://libarchive.org",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libarchive@3.8.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:28; conan recipe rrev=ffee18995c706e02bf96e7a2f7042e0d"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libbacktrace",
+      "name": "libbacktrace",
+      "versionInfo": "cci.20210118",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/ianlancetaylor/libbacktrace",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "Transitive dependency resolved by Conan recipe; rrev a7691bfccd8caaf66309df196790a5a1.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libbacktrace@cci.20210118"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=transitive; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26); conan recipe rrev=a7691bfccd8caaf66309df196790a5a1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-lz4",
+      "name": "lz4",
+      "versionInfo": "1.10.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/lz4/lz4",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "via requirements(); force=True where stated",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/lz4@1.10.0"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:109; conan recipe rrev=982d9b673900f665a1da109e09c17cab"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-nudb",
+      "name": "nudb",
+      "versionInfo": "2.0.9",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/CPPAlliance/NuDB",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSL-1.0",
+      "licenseDeclared": "BSL-1.0",
+      "copyrightText": "NOASSERTION",
+      "description": "",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/nudb@2.0.9"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:29; conan recipe rrev=11149c73f8f2baff9a0198fe25971fc7"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-openssl",
+      "name": "openssl",
+      "versionInfo": "1.1.1w",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/openssl/openssl",
+      "filesAnalyzed": false,
+      "licenseConcluded": "OpenSSL",
+      "licenseDeclared": "OpenSSL",
+      "copyrightText": "NOASSERTION",
+      "description": " CMake minimum 1.1.1 at CMakeLists.txt:88.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/openssl@1.1.1w"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:30; conan recipe rrev=a8f0792d7c5121b954578a7149d23e03"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-protobuf",
+      "name": "protobuf",
+      "versionInfo": "3.21.12",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/protocolbuffers/protobuf",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/protobuf@3.21.12"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=tool; version_status=pinned; source=conanfile.py:40; conan recipe rrev=f4b3baecdc1169c9db2a96e395ca5462"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-python",
+      "name": "python",
+      "versionInfo": "3.11",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "documented minimum in BUILD.md",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/python@3.11"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=toolchain; version_status=minimum; source=BUILD.md:40"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-re2",
+      "name": "re2",
+      "versionInfo": "20230301",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/google/re2",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "Transitive dependency resolved by Conan recipe; rrev e697243fa7b545eefaa91fba7ba44146.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/re2@20230301"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=transitive; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26); conan recipe rrev=e697243fa7b545eefaa91fba7ba44146"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-rocksdb",
+      "name": "rocksdb",
+      "versionInfo": "10.0.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/facebook/rocksdb",
+      "filesAnalyzed": false,
+      "licenseConcluded": "GPL-2.0-only AND Apache-2.0",
+      "licenseDeclared": "GPL-2.0-only AND Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "description": "only when option rocksdb=True (default True)",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/rocksdb@10.0.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:115; conan recipe rrev=359fb06daba8eea143680b45af86f50c"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-secp256k1",
+      "name": "secp256k1",
+      "versionInfo": "0.6.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/bitcoin-core/secp256k1",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "description": "Vendored copy in external/secp256k1, version 0.6.0 from configure.ac.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "NOASSERTION"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=vendored; version_status=pinned; source=external/secp256k1/configure.ac:6"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-snappy",
+      "name": "snappy",
+      "versionInfo": "1.2.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/google/snappy",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "Transitive dependency resolved by Conan recipe; rrev a308ba649dfa7f2e86db38d8b781124a.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/snappy@1.2.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=transitive; version_status=resolved-by-recipe; source=conan graph resolution (conancenter, 2026-11-26); conan recipe rrev=a308ba649dfa7f2e86db38d8b781124a"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-soci",
+      "name": "soci",
+      "versionInfo": "4.0.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/SOCI/soci",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSL-1.0",
+      "licenseDeclared": "BSL-1.0",
+      "copyrightText": "NOASSERTION",
+      "description": "",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/soci@4.0.3"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:31; conan recipe rrev=e726491a03468795453f7c83fc924a96"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-sqlite3",
+      "name": "sqlite3",
+      "versionInfo": "3.49.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://www.sqlite.org",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Unlicense",
+      "licenseDeclared": "Unlicense",
+      "copyrightText": "NOASSERTION",
+      "description": "via requirements(); force=True where stated",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/sqlite3@3.49.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:111; conan recipe rrev=8631739a4c9b93bd3d6b753bac548a63"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-ubuntu",
+      "name": "ubuntu",
+      "versionInfo": "ubuntu:24.04",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "base image of the multi-stage Docker build",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/ubuntu@ubuntu:24.04"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=toolchain; version_status=pinned; source=Dockerfile:17"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-xxhash",
+      "name": "xxhash",
+      "versionInfo": "0.8.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://github.com/Cyan4973/xxHash",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "copyrightText": "NOASSERTION",
+      "description": "via requirements(); force=True where stated",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/xxhash@0.8.3"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:116; conan recipe rrev=c37268da641a0cf1d38d1f0f01912ef3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-zlib",
+      "name": "zlib",
+      "versionInfo": "1.3.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "https://zlib.net",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Zlib",
+      "licenseDeclared": "Zlib",
+      "copyrightText": "NOASSERTION",
+      "description": "",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/zlib@1.3.1"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationDate": "2026-11-26T14:26:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: postfiatd-sbom-harness",
+          "comment": "kind=direct; version_status=pinned; source=conanfile.py:32; conan recipe rrev=cac0f6daea041b0ccf42934163defb20"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-Package-abseil",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-antithesis-sdk-cpp",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-b2",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-boost",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bzip2",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-c-ares",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-cmake",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-cmake--tool-requires-",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-conan",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-date",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-doctest",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-ed25519-donna",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-gcc",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-grpc",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-jemalloc",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-libarchive",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-libbacktrace",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-lz4",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-nudb",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-openssl",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-protobuf",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-python",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-re2",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-rocksdb",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-secp256k1",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-snappy",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-soci",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-sqlite3",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-ubuntu",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-xxhash",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-zlib",
+      "relationshipType": "DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package-postfiatd"
+    }
+  ]
+}

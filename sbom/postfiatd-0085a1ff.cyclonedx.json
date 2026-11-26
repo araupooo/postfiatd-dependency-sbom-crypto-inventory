@@ -1,0 +1,1132 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:5135b044-c5d9-5960-ab06-12303e5dd314",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-26T14:26:00Z",
+    "tools": [
+      {
+        "vendor": "postfiatd-sbom-harness",
+        "name": "generate_sbom.py",
+        "version": "1.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:github/postfiatorg/postfiatd@0085a1ff885d6a446369cf73a4430f75af22be55",
+      "name": "postfiatd",
+      "version": "1.0.9",
+      "description": "PostFiat daemon (XRP Ledger protocol, C++), commit 0085a1ff885d6a446369cf73a4430f75af22be55",
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/postfiatorg/postfiatd"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/abseil@20230802.1",
+      "name": "abseil",
+      "scope": "required",
+      "description": "Transitive dependency resolved by Conan recipe; rrev b0fb32ec7a3ee48c23f78aa249362165.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "transitive"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "b0fb32ec7a3ee48c23f78aa249362165"
+        }
+      ],
+      "version": "20230802.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/abseil/abseil-cpp"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "vendored:antithesis-sdk-cpp",
+      "name": "antithesis-sdk-cpp",
+      "scope": "required",
+      "description": "vendored copy; upstream antithesishq/antithesis-sdk-cpp",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "vendored"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "external/antithesis-sdk/CMakeLists.txt:4"
+        }
+      ],
+      "version": "0.4.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/antithesishq/antithesis-sdk-cpp"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/b2@5.6.1",
+      "name": "b2",
+      "scope": "optional",
+      "description": "Transitive dependency resolved by Conan recipe; rrev 41ae5699a0588de1202afe5b675cc86d.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "tool"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "41ae5699a0588de1202afe5b675cc86d"
+        }
+      ],
+      "version": "5.6.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSL-1.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.bfgroup.xyz/b2/"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/boost@1.83.0",
+      "name": "boost",
+      "scope": "required",
+      "description": "via requirements(); force=True where stated CMake minimum 1.82 at cmake/deps/Boost.cmake:1.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:107"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "d59a21babae33a7dde35565450468f49"
+        }
+      ],
+      "version": "1.83.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSL-1.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.boost.org"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/bzip2@1.0.8",
+      "name": "bzip2",
+      "scope": "required",
+      "description": "Transitive dependency resolved by Conan recipe; rrev c470882369c2d95c5c77e970c0c7e321.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "transitive"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "c470882369c2d95c5c77e970c0c7e321"
+        }
+      ],
+      "version": "1.0.8",
+      "licenses": [
+        {
+          "license": {
+            "id": "bzip2-1.0.6"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://sourceware.org/bzip2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/c-ares@1.34.9",
+      "name": "c-ares",
+      "scope": "required",
+      "description": "Transitive dependency resolved by Conan recipe; rrev 52c1c4a734d0a79cbf918dd72fbc6179.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "transitive"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "52c1c4a734d0a79cbf918dd72fbc6179"
+        }
+      ],
+      "version": "1.34.9",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://c-ares.haxx.se/"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/cmake@3.25.1",
+      "name": "cmake",
+      "scope": "optional",
+      "description": "CMake built from source in the Docker build Conan graph also resolves this name as a tool-require at version 3.31.12 (rrev 71c3a0c80cc89cde62956db9e69550e0).",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "toolchain"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "Dockerfile:39"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "71c3a0c80cc89cde62956db9e69550e0"
+        }
+      ],
+      "version": "3.25.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/Kitware/CMake"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/cmake (tool-requires)@3.31.12 and 4.5.1",
+      "name": "cmake (tool-requires)",
+      "scope": "optional",
+      "description": "CMake versions pulled as tool-requires by Conan recipes (grpc/protobuf toolchains); distinct from the Docker-pinned CMake 3.25.1 used to build postfiatd itself.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "tool"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        }
+      ],
+      "version": "3.31.12 and 4.5.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/conan@2.17",
+      "name": "conan",
+      "scope": "optional",
+      "description": "documented minimum in BUILD.md",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "toolchain"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "minimum"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "BUILD.md:41"
+        }
+      ],
+      "version": "2.17"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/date@3.0.4",
+      "name": "date",
+      "scope": "required",
+      "description": "via requirements(); force=True where stated",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:108"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "862e11e80030356b53c2c38599ceb32b"
+        }
+      ],
+      "version": "3.0.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/HowardHinnant/date"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/doctest@2.4.11",
+      "name": "doctest",
+      "scope": "optional",
+      "description": "",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "test"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:36"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "a4211dfc329a16ba9f280f9574025659"
+        }
+      ],
+      "version": "2.4.11",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/onqtam/doctest"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "vendored:ed25519-donna",
+      "name": "ed25519-donna",
+      "scope": "required",
+      "description": "UNVERSIONED snapshot: no version macro, CHANGELOG, or release tag in the vendored tree; consolidated into external/ 2024-04-19 (commit e2384885f); upstream floodyberry/ed25519-donna (no releases published)",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "vendored"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "unversioned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "external/ed25519-donna/ed25519.h:1"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "Public Domain"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/floodyberry/ed25519-donna"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/gcc@13",
+      "name": "gcc",
+      "scope": "optional",
+      "description": "compiler installed in the Docker build (gcc-13/g++-13)",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "toolchain"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "Dockerfile:32"
+        }
+      ],
+      "version": "13"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/grpc@1.50.1",
+      "name": "grpc",
+      "scope": "required",
+      "description": "",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:27"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "12e06d669d66951b6a381d695cb715d0"
+        }
+      ],
+      "version": "1.50.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/grpc/grpc"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/jemalloc@5.3.0",
+      "name": "jemalloc",
+      "scope": "optional",
+      "description": "only when option jemalloc=True (default False)",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "optional"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:113"
+        }
+      ],
+      "version": "5.3.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libarchive@3.8.1",
+      "name": "libarchive",
+      "scope": "required",
+      "description": "",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:28"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "ffee18995c706e02bf96e7a2f7042e0d"
+        }
+      ],
+      "version": "3.8.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://libarchive.org"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libbacktrace@cci.20210118",
+      "name": "libbacktrace",
+      "scope": "required",
+      "description": "Transitive dependency resolved by Conan recipe; rrev a7691bfccd8caaf66309df196790a5a1.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "transitive"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "a7691bfccd8caaf66309df196790a5a1"
+        }
+      ],
+      "version": "cci.20210118",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/ianlancetaylor/libbacktrace"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/lz4@1.10.0",
+      "name": "lz4",
+      "scope": "required",
+      "description": "via requirements(); force=True where stated",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:109"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "982d9b673900f665a1da109e09c17cab"
+        }
+      ],
+      "version": "1.10.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/lz4/lz4"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/nudb@2.0.9",
+      "name": "nudb",
+      "scope": "required",
+      "description": "",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:29"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "11149c73f8f2baff9a0198fe25971fc7"
+        }
+      ],
+      "version": "2.0.9",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSL-1.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/CPPAlliance/NuDB"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/openssl@1.1.1w",
+      "name": "openssl",
+      "scope": "required",
+      "description": " CMake minimum 1.1.1 at CMakeLists.txt:88.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:30"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "a8f0792d7c5121b954578a7149d23e03"
+        }
+      ],
+      "version": "1.1.1w",
+      "licenses": [
+        {
+          "license": {
+            "id": "OpenSSL"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/openssl/openssl"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/protobuf@3.21.12",
+      "name": "protobuf",
+      "scope": "optional",
+      "description": "",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "tool"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:40"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "f4b3baecdc1169c9db2a96e395ca5462"
+        }
+      ],
+      "version": "3.21.12",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/protocolbuffers/protobuf"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/python@3.11",
+      "name": "python",
+      "scope": "optional",
+      "description": "documented minimum in BUILD.md",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "toolchain"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "minimum"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "BUILD.md:40"
+        }
+      ],
+      "version": "3.11"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/re2@20230301",
+      "name": "re2",
+      "scope": "required",
+      "description": "Transitive dependency resolved by Conan recipe; rrev e697243fa7b545eefaa91fba7ba44146.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "transitive"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "e697243fa7b545eefaa91fba7ba44146"
+        }
+      ],
+      "version": "20230301",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/google/re2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/rocksdb@10.0.1",
+      "name": "rocksdb",
+      "scope": "required",
+      "description": "only when option rocksdb=True (default True)",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:115"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "359fb06daba8eea143680b45af86f50c"
+        }
+      ],
+      "version": "10.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "GPL-2.0-only AND Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/facebook/rocksdb"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "vendored:secp256k1",
+      "name": "secp256k1",
+      "scope": "required",
+      "description": "vendored copy; CHANGELOG.md confirms [0.6.0] - 2024-11-04 as latest entry; upstream bitcoin-core/secp256k1",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "vendored"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "external/secp256k1/configure.ac:6"
+        }
+      ],
+      "version": "0.6.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/bitcoin-core/secp256k1"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/snappy@1.2.1",
+      "name": "snappy",
+      "scope": "required",
+      "description": "Transitive dependency resolved by Conan recipe; rrev a308ba649dfa7f2e86db38d8b781124a.",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "transitive"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "resolved-by-recipe"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conan graph resolution (conancenter, 2026-11-26)"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "a308ba649dfa7f2e86db38d8b781124a"
+        }
+      ],
+      "version": "1.2.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/google/snappy"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/soci@4.0.3",
+      "name": "soci",
+      "scope": "required",
+      "description": "",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:31"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "e726491a03468795453f7c83fc924a96"
+        }
+      ],
+      "version": "4.0.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSL-1.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/SOCI/soci"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/sqlite3@3.49.1",
+      "name": "sqlite3",
+      "scope": "required",
+      "description": "via requirements(); force=True where stated",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:111"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "8631739a4c9b93bd3d6b753bac548a63"
+        }
+      ],
+      "version": "3.49.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "Unlicense"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.sqlite.org"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/ubuntu@ubuntu:24.04",
+      "name": "ubuntu",
+      "scope": "optional",
+      "description": "base image of the multi-stage Docker build",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "toolchain"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "Dockerfile:17"
+        }
+      ],
+      "version": "ubuntu:24.04"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/xxhash@0.8.3",
+      "name": "xxhash",
+      "scope": "required",
+      "description": "via requirements(); force=True where stated",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:116"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "c37268da641a0cf1d38d1f0f01912ef3"
+        }
+      ],
+      "version": "0.8.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/Cyan4973/xxHash"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/zlib@1.3.1",
+      "name": "zlib",
+      "scope": "required",
+      "description": "",
+      "properties": [
+        {
+          "name": "postfiatd:kind",
+          "value": "direct"
+        },
+        {
+          "name": "postfiatd:version_status",
+          "value": "pinned"
+        },
+        {
+          "name": "postfiatd:source",
+          "value": "conanfile.py:32"
+        },
+        {
+          "name": "postfiatd:conan_recipe_revision",
+          "value": "cac0f6daea041b0ccf42934163defb20"
+        }
+      ],
+      "version": "1.3.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "Zlib"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://zlib.net"
+        }
+      ]
+    }
+  ]
+}
